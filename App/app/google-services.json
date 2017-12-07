@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1087206650976",
+    "firebase_url": "https://studywallet-f5bf4.firebaseio.com",
+    "project_id": "studywallet-f5bf4",
+    "storage_bucket": "studywallet-f5bf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087206650976:android:846c48db0b91a2cf",
+        "android_client_info": {
+          "package_name": "com.dcentralized.studywallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087206650976-lhjq2q1ska28c9en7ohhcci9e1kthd0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dcentralized.studywallet",
+            "certificate_hash": "e25e1cb442f51183232c0d8e4b379661c93f24ae"
+          }
+        },
+        {
+          "client_id": "1087206650976-agrdvlen27j1boeknp7vrp1i0vrf9qnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGxo8IPY7IKyzvN6yJQ3gsH1fXVRSgG1Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087206650976-agrdvlen27j1boeknp7vrp1i0vrf9qnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

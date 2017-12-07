@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Auth</string>
+    <string name="buttonLoginText">Login</string>
+    <string name="tvWelcomeText">Welcome </string>
+</resources>
