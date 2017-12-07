@@ -1,32 +1,23 @@
 language: android
-jdk: oraclejdk8
-env:
- global:
-    - ANDROID_API_LEVEL=25
-    - ANDROID_BUILD_TOOLS_VERSION=25.0.2
+jdk:
+  - oraclejdk8
+sudo: required
 android:
- licenses:
-    - 'android-sdk-preview-license-.+'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
- components:
+  components:
     - tools
     - platform-tools
-    # The BuildTools version used by your project
-    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    # The SDK version used to compile your project
-    - android-$ANDROID_API_LEVEL
-    # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
+    - build-tools-25.0.2
+    - android-25
     - extra-android-m2repository
-    - addon-google_apis-google-$ANDROID_API_LEVEL
-before_script:
-    # Prepare pre-accepted licenses to not be promted at installation
-    - cd App
-    - chmod +x gradlew
-    - mkdir -p "$ANDROID_HOME/licenses"
-    - ls
-    - cp ./licenses/* "$ANDROID_HOME/licenses/"
+    - extra-google-m2repository
+    - extra-android-support
+    - extra-google-google_play_services
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'intel-android-extra-license.+'
+before_install:
+  - cd App
+  - chmod +x gradlew
 script:
-    - ./gradlew build check
+  - ./gradlew build
