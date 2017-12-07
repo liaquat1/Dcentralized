@@ -23,6 +23,6 @@ android:
     - addon-google_apis-google-$ANDROID_API_LEVEL
 before_install:
   - cd App
-
+  - chmod +x gradlew
 script:
     - ./gradlew build check
