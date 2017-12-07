@@ -21,11 +21,10 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
-before_install:
-  - cd App
-  - chmod +x gradlew
 before_script:
     # Prepare pre-accepted licenses to not be promted at installation
+    - cd App
+    - chmod +x gradlew
     - mkdir -p "$ANDROID_HOME/licenses"
     - cp ./google-licenses/* "$ANDROID_HOME/licenses/"
 script:
