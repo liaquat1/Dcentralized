@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Research Duo 1 - POC Userflow</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">LOGIN</string>
+    <string name="logo">Picture of the logo</string>
+    <string name="testNumber">90909</string>
+    <string name="testRank">#5310</string>
+</resources>
