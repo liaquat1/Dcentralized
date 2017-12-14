@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="nl.fhict.liwei.researchduo1_poc.MainActivity">
+    tools:context="nl.fhict.liwei.researchduo1_poc.Activity.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"

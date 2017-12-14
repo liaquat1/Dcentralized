@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SMTE.iml" filepath="$PROJECT_DIR$/SMTE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/POC - Layout.iml" filepath="$PROJECT_DIR$/POC - Layout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

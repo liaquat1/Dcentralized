@@ -1,13 +1,15 @@
-package nl.fhict.liwei.researchduo1_poc;
+package nl.fhict.liwei.researchduo1_poc.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import nl.fhict.liwei.researchduo1_poc.Activity.HomeScreen;
+import nl.fhict.liwei.researchduo1_poc.R;
 
 public class MainActivity extends AppCompatActivity {
 

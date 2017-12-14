@@ -6,4 +6,7 @@
     <string name="logo">Picture of the logo</string>
     <string name="testNumber">90909</string>
     <string name="testRank">#5310</string>
+    <string name="title_activity_project_test">Test Project</string>
+    <string name="test_text">With this Java project, you will be challenged to create an drawing application from scratch using JavaFX for the GUI.</string>
+    <string name="action_settings">Settings</string>
 </resources>
