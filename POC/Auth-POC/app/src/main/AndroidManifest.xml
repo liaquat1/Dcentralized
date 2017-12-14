@@ -21,7 +21,7 @@
 
                 <data
                     android:host="callback"
-                    android:scheme="com.dcentralized.auth" />
+                    android:scheme="com.decentralized.studywallet" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>

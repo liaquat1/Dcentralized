@@ -3,20 +3,24 @@ package com.dcentralized.auth;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 /**
  * http://progur.com/2016/10/how-to-use-reddit-oauth2-in-android-apps.html
  */
 public class LoginActivity extends AppCompatActivity {
-    private static final String AUTH_URL = "https://www.reddit.com/api/v1/authorize.compact?client_id=%s&response_type=code&state=%s&redirect_uri=%s&duration=permanent&scope=identity";
-    private static final String CLIENT_ID = "fyuIYxjWBHIfGA";
-    private static final String REDIRECT_URI = "com.dcentralized.auth://callback";
-    private static final String STATE = "MY_RANDOM_STRING_1";
-    private static final String ACCESS_TOKEN_URL = "https://www.reddit.com/api/v1/access_token";
+    private static final String AUTH_URL = "https://identity.fhict.nl/connect/authorize?client_id=%s&scope=%s&response_type=token&redirect_uri=%s&state=%s";
+    private static final String CLIENT_ID = "i360661-studywalle";
+    private static final String SCOPE = "fhict%20fhict_personal";
+    private static final String REDIRECT_URI = "com.decentralized.studywallet://callback";
+    private static final String STATE = "k4FETESYm9";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onButtonLoginClick(View view) {
-        String url = String.format(AUTH_URL, CLIENT_ID, STATE, REDIRECT_URI);
+        String url = "https://identity.fhict.nl/connect/authorize?client_id=i360661-studywalle&scope=fhict%20fhict_personal&response_type=token&redirect_uri=com.decentralized.studywallet://callback&state=abc";
+//        String url = String.format(AUTH_URL, CLIENT_ID, SCOPE, REDIRECT_URI, STATE);
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(url));
     }
@@ -34,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(getIntent()!=null && getIntent().getAction().equals(Intent.ACTION_VIEW)) {
+        if(getIntent() != null && getIntent().getData() != null && getIntent().getAction().equals(Intent.ACTION_VIEW)) {
             Uri uri = getIntent().getData();
             if(uri.getQueryParameter("error") != null) {
                 String error = uri.getQueryParameter("error");
