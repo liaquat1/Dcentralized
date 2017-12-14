@@ -13,7 +13,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * http://progur.com/2016/10/how-to-use-reddit-oauth2-in-android-apps.html
+ * Docs: https://api.fhict.nl/documentation/Implicit
+ * Conf: https://identity.fhict.nl/.well-known/openid-configuration
  */
 public class LoginActivity extends AppCompatActivity {
     private static final String AUTH_URL = "https://identity.fhict.nl/connect/authorize?client_id=%s&scope=%s&response_type=token&redirect_uri=%s&state=%s";
@@ -29,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onButtonLoginClick(View view) {
-        String url = "https://identity.fhict.nl/connect/authorize?client_id=i360661-studywalle&scope=fhict%20fhict_personal&response_type=token&redirect_uri=com.decentralized.studywallet://callback&state=abc";
-//        String url = String.format(AUTH_URL, CLIENT_ID, SCOPE, REDIRECT_URI, STATE);
+//        String url = "https://identity.fhict.nl/connect/authorize?client_id=i360661-studywalle&scope=fhict%20fhict_personal&response_type=token&redirect_uri=com.decentralized.studywallet://callback&state=abc";
+        String url = String.format(AUTH_URL, CLIENT_ID, SCOPE, REDIRECT_URI, STATE);
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         CustomTabsIntent customTabsIntent = builder.build();
