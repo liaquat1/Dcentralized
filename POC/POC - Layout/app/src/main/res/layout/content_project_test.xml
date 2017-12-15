@@ -104,7 +104,7 @@
                 android:id="@+id/tvProjectDescription"
                 style="@style/AppTheme.ProjectTextStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_weight="10"
                 android:text="@string/test_text" />
         </LinearLayout>
@@ -114,10 +114,11 @@
             style="@style/AppTheme.studieMuntenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/round_corner"
+            android:onClick="onButtonAddProjectClick"
             android:text="Apply"
             android:textColor="@color/colorAccent" />
 

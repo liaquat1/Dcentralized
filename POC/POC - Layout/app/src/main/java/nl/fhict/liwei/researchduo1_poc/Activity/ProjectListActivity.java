@@ -2,6 +2,7 @@ package nl.fhict.liwei.researchduo1_poc.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import nl.fhict.liwei.researchduo1_poc.R;
 

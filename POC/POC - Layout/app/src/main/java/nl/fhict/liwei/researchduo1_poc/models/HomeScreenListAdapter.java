@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import nl.fhict.liwei.researchduo1_poc.R;
@@ -18,7 +16,7 @@ import nl.fhict.liwei.researchduo1_poc.R;
  * Created by Liwei on 14-Dec-17.
  */
 
-public class CustomListViewAdapter extends ArrayAdapter<ListViewItem> {
+public class HomeScreenListAdapter extends ArrayAdapter<HomeScreenListItem> {
     private ViewHolder viewHolder;
 
     private static class ViewHolder {
@@ -26,7 +24,7 @@ public class CustomListViewAdapter extends ArrayAdapter<ListViewItem> {
         private TextView coinView;
     }
 
-    public CustomListViewAdapter(Context context, int id, ArrayList items){
+    public HomeScreenListAdapter(Context context, int id, ArrayList items){
         super(context, id, items);
     }
 
@@ -43,7 +41,7 @@ public class CustomListViewAdapter extends ArrayAdapter<ListViewItem> {
             viewHolder = (ViewHolder) v.getTag();
         }
 
-        ListViewItem item = getItem(position);
+        HomeScreenListItem item = getItem(position);
         if(item != null){
             viewHolder.itemView.setText(item.getName());
             viewHolder.itemView.setTextColor(Color.parseColor("#F3AB3B"));

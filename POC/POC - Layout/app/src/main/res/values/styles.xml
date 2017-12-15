@@ -20,6 +20,7 @@
         <item name="android:fontFamily">@font/ibm_plex_sans</item>
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:paddingBottom">10dp</item>
     </style>
 
     <style name="AppTheme.errorMessage">
@@ -51,7 +52,7 @@
     </style>
 
     <style name="AppTheme.ProjectTextStyle">
-        <item name="android:fontFamily">@font/ibm_plex_mono_extra_light</item>
+        <item name="android:fontFamily">@font/ibm_plex_sans</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
