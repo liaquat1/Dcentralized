@@ -6,11 +6,11 @@ import android.widget.ListView;
  * Created by Liwei on 14-Dec-17.
  */
 
-public class ListViewItem {
+public class HomeScreenListItem {
     private String name;
     private String coins;
 
-    public ListViewItem(String name, String coins){
+    public HomeScreenListItem(String name, String coins){
         this.name = name;
         this.coins = coins;
     }

@@ -1,5 +1,6 @@
 package nl.fhict.liwei.researchduo1_poc.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,7 +20,11 @@ public class ProjectTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_project_test);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("JavaFX Application");
-        toolbar.setTitleTextColor(0x7f050028);
         setSupportActionBar(toolbar);
+    }
+
+    public void onButtonAddProjectClick(View v){
+        Intent intent = new Intent(this, HomeScreen.class);
+        startActivity(intent);
     }
 }

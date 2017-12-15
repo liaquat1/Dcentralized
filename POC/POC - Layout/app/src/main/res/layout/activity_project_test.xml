@@ -25,15 +25,16 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:titleTextAppearance="@style/AppTheme.ToolbarTitle"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                style="@style/AppTheme.ToolbarTitle"/>
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="181dp"
                 android:layout_weight="1"
+                android:background="@android:color/white"
                 app:srcCompat="@drawable/java_logo" />
 
         </android.support.design.widget.CollapsingToolbarLayout>

@@ -1,8 +1,10 @@
-package com.demo.studiemunten.splashtest;
+package nl.fhict.liwei.researchduo1_poc.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import nl.fhict.liwei.researchduo1_poc.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
                 } finally {
 
                     Intent i = new Intent(SplashActivity.this,
-                            MainActivity.class);
+                            HomeScreen.class);
                     startActivity(i);
                     finish();
                 }

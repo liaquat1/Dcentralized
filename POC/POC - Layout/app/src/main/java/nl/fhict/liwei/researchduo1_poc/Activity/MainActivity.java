@@ -26,9 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         if((email != null && password != null)){
             if(!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
-                Intent intent = new Intent(this, HomeScreen.class);
+                Intent intent = new Intent(this, SplashActivity.class);
                 startActivity(intent);
-                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
             } else {
                 errorMessage.setText("Email or password is incorrect!");
             }
