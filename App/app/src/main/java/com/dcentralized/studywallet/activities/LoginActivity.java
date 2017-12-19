@@ -36,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void onButtonLoginClick(View view) {
         if (service.authenticate()) {
-            // TODO: redirect user to splash activity to load data
+            Intent intent = new Intent(this, SplashActivity.class);
+            startActivity(intent);
         }
     }
 

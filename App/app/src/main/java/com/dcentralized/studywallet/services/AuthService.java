@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.activities.SplashActivity;
 import com.dcentralized.studywallet.utilities.DateUtility;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -91,9 +92,21 @@ public class AuthService {
                     Calendar date = Calendar.getInstance();
                     this.token = token;
                     storeToken(token, expires, date);
+                    startActivity(SplashActivity.class);
                 }
             }
         }
+    }
+
+    /**
+     * Starts a new activity
+     *
+     * @param activity to start
+     * @author Tom de Wildt
+     */
+    private void startActivity(Class activity) {
+        Intent intent = new Intent(context, activity);
+        context.startActivity(intent);
     }
 
     /**
