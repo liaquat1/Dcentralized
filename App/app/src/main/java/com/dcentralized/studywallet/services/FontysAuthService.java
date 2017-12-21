@@ -22,7 +22,7 @@ import java.util.Calendar;
  *
  * @author Tom de Wildt
  */
-public class AuthService {
+public class FontysAuthService {
     // API Variables
     private static final String AUTH_URL = "https://identity.fhict.nl/connect/authorize?client_id=%s&scope=%s&response_type=token&redirect_uri=%s&state=%s";
     private static final String CLIENT_ID = "i360661-studywalle";
@@ -30,13 +30,13 @@ public class AuthService {
     private static final String REDIRECT_URI = "com.decentralized.studywallet://callback";
 
     // Preferences Keys
-    private static final String TOKEN_PREF_KEY = AuthService.class.getSimpleName().toUpperCase() + "_TOKEN";
-    private static final String DATE_PREF_KEY = AuthService.class.getSimpleName().toUpperCase() + "_DATE";
-    private static final String EXPIRES_PREF_KEY = AuthService.class.getSimpleName().toUpperCase() + "_EXPIRES";
+    private static final String TOKEN_PREF_KEY = FontysAuthService.class.getSimpleName().toUpperCase() + "_TOKEN";
+    private static final String DATE_PREF_KEY = FontysAuthService.class.getSimpleName().toUpperCase() + "_DATE";
+    private static final String EXPIRES_PREF_KEY = FontysAuthService.class.getSimpleName().toUpperCase() + "_EXPIRES";
 
     // Class Variables
-    private static final String TAG = AuthService.class.getSimpleName();
-    private static AuthService instance;
+    private static final String TAG = FontysAuthService.class.getSimpleName();
+    private static FontysAuthService instance;
     private Context context;
     private String state;
     private String token;
@@ -47,7 +47,7 @@ public class AuthService {
      * @param context activity context
      * @author Tom de Wildt
      */
-    private AuthService(Context context) {
+    private FontysAuthService(Context context) {
         this.context = context;
         this.state = getRandomState();
         this.token = loadToken();
@@ -169,15 +169,25 @@ public class AuthService {
     }
 
     /**
+     * Gets the token
+     *
+     * @return token
+     * @author Tom de Wildt
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
      * Returns the instance of the auth service, if it's null it will create a new one
      *
      * @param context the activity
      * @return instance
      * @author Tom de Wildt
      */
-    public static AuthService getInstance(Context context) {
+    public static FontysAuthService getInstance(Context context) {
         if (instance == null) {
-            instance = new AuthService(context);
+            instance = new FontysAuthService(context);
         }
         return instance;
     }

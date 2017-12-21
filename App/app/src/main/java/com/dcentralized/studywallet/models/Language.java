@@ -7,9 +7,11 @@ public enum Language {
 	Javascript,
 	Angular,
 	React,
-	CPlusPlus,
+	CPP,
 	C,
 	Go,
+	PHP,
+	Swift,
 	Kotlin,
 	Android
 }

@@ -7,11 +7,13 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String employeeId;
+	private String email;
 	private UserType type;
 	private int balance;
 	private int totalCoins;
 	private List<Transaction> transactions;
 	private List<Project> projects;
+
 
 
 	public String getId() {
@@ -25,6 +27,9 @@ public class User {
 	}
 	public String getEmployeeId() {
 		return this.employeeId;
+	}
+	public String getEmail() {
+		return this.email;
 	}
 	public UserType getType() {
 		return this.type;
