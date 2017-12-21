@@ -6,15 +6,13 @@ public class User {
 	private String id;
 	private String firstname;
 	private String lastname;
-	private String employeeId;
+	private int employeeId;
 	private String email;
 	private UserType type;
 	private int balance;
 	private int totalCoins;
 	private List<Transaction> transactions;
 	private List<Project> projects;
-
-
 
 	public String getId() {
 		return this.id;
@@ -25,7 +23,7 @@ public class User {
 	public String getLastname() {
 		return this.lastname;
 	}
-	public String getEmployeeId() {
+	public int getEmployeeId() {
 		return this.employeeId;
 	}
 	public String getEmail() {

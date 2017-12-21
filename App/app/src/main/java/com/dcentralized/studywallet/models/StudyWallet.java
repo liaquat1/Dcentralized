@@ -17,7 +17,7 @@ public class StudyWallet {
 
 	public void setCurrentUser() {
 		if (repository.isUserInDatabase()) {
-			currentUser = repository.getUserFromDatabase();
+			currentUser = repository.getUserFromDatabase(repository.getUserId());
 		} else {
 			User user = repository.getUserFromFontys();
 			repository.addUserToDatabase(user);

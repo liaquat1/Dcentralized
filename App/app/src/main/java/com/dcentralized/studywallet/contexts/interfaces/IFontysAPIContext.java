@@ -4,4 +4,5 @@ import org.json.JSONObject;
 
 public interface IFontysAPIContext {
     String getCurrentUserId();
+    JSONObject getCurrentUser();
 }
