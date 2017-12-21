@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 
+
 /**
  * Implementation of App Widget functionality.
  */
@@ -14,9 +15,10 @@ public class WidgetProvider extends AppWidgetProvider {
                                 int appWidgetId) {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
+
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_provider);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
+
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

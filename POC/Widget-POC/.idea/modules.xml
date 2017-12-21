@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Widget-POC.iml" filepath="$PROJECT_DIR$/Widget-POC.iml" />
+      <module fileurl="file://D:\Fontys\Semester3\SM42\SM42-PT\Dcentralized\POC\Widget-POC\Widget-POC.iml" filepath="D:\Fontys\Semester3\SM42\SM42-PT\Dcentralized\POC\Widget-POC\Widget-POC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Fontys\Semester3\SM42\SM42-PT\Dcentralized\POC\Widget-POC\app\app.iml" filepath="D:\Fontys\Semester3\SM42\SM42-PT\Dcentralized\POC\Widget-POC\app\app.iml" />
     </modules>
   </component>
 </project>
