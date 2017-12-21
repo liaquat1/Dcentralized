@@ -21,7 +21,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void onButtonAddProjectClick(View v){
-        Intent intent = new Intent(HomeScreen.this, ProjectTestActivity.class);
+        Intent intent = new Intent(HomeScreen.this, ProjectListActivity.class);
         startActivity(intent);
     }
 
