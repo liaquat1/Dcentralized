@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">widget</string>
+    <string name="app_name">Studywallet</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="activity_main_text">Empty activity for building only</string>
