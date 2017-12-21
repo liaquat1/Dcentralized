@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nl.fhict.liwei.researchduo1_poc.R;
 
@@ -27,7 +28,7 @@ public class ProjectListAdapter extends ArrayAdapter<ProjectListItem>{
         private ImageView languagePicture;
     }
 
-    public ProjectListAdapter(Context context, int id, ArrayList items){
+    public ProjectListAdapter(Context context, int id, List items){
         super(context, id, items);
     }
 
@@ -47,7 +48,14 @@ public class ProjectListAdapter extends ArrayAdapter<ProjectListItem>{
 
         ProjectListItem item = getItem(position);
         if(item != null){
-            
+            viewHolder.languagePicture.setImageDrawable(item.getLanguagePicture());
+            viewHolder.languagePicture.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            viewHolder.projectShortDescription.setText(item.getProjectShortDescription());
+            viewHolder.projectShortDescription.setBackgroundColor(Color.parseColor("#F3AB3B"));
+            viewHolder.projectShortDescription.setTextColor(Color.parseColor("#333333"));
+            viewHolder.projectLanguage.setText(item.getProjectLanguageString());
+            viewHolder.projectLanguage.setBackgroundColor(Color.parseColor("#F3AB3B"));
+            viewHolder.projectLanguage.setTextColor(Color.parseColor("#3A3A3A"));
         }
 
         return v;
