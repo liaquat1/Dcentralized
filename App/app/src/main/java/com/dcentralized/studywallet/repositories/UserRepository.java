@@ -15,10 +15,10 @@ public class UserRepository {
     }
 
     public List<Transaction> getTransactions(String id) {
-        return context.getTransactions(id);
+        return context.getTransactions(context.getReferences(id, "transactions"));
     }
 
     public List<Project> getProjects(String id) {
-        return context.getProjects(id);
+        return context.getProjects(context.getReferences(id, "projects"));
     }
 }

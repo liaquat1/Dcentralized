@@ -1,5 +1,7 @@
 package com.dcentralized.studywallet.models;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.util.Date;
 
 public class Project {
@@ -29,8 +31,12 @@ public class Project {
 	public Language getLanguage() {
 		return this.language;
 	}
+	@Exclude
 	public Company getOwner() {
 		return this.owner;
+	}
+	public void setOwner(Company company) {
+		this.owner = company;
 	}
 	public int getReward() {
 		return this.reward;
