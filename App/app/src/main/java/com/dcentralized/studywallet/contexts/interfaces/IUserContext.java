@@ -1,8 +1,11 @@
 package com.dcentralized.studywallet.contexts.interfaces;
 
-/**
- * Created by Tom de Wildt on 22/12/2017.
- */
+import com.dcentralized.studywallet.models.Project;
+import com.dcentralized.studywallet.models.Transaction;
+
+import java.util.List;
 
 public interface IUserContext {
+    List<Transaction> getTransactions(String id);
+    List<Project> getProjects(String id);
 }
