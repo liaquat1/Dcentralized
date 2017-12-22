@@ -14,15 +14,32 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * This class handles communication with the Fontys API
+ *
+ * @author Tom de Wildt
+ */
 public class FontysAPIContext implements IFontysContext {
     private static final String TAG = FontysAPIContext.class.getSimpleName();
     private SyncHttpClient client;
 
+    /**
+     * FontysAPIContext constructor, creates a new http client and adds the authorization header
+     *
+     * @param context activity context
+     * @author Tom de Wildt
+     */
     public FontysAPIContext(Context context) {
         client = new SyncHttpClient();
         client.addHeader("Authorization", FontysAuthService.getInstance(context).getToken());
     }
 
+    /**
+     * Gets the current users id bound to the token
+     *
+     * @return null or the id
+     * @author Tom de Wildt
+     */
     @Override
     public String getCurrentUserId() {
         final MutableObject<String> id = new MutableObject<>();
@@ -49,6 +66,12 @@ public class FontysAPIContext implements IFontysContext {
         return id.getValue();
     }
 
+    /**
+     * Gets the current users bound to the token
+     *
+     * @return a json user or null
+     * @author Tom de Wildt
+     */
     @Override
     public JSONObject getCurrentUser() {
         final MutableObject<JSONObject> id = new MutableObject<>();

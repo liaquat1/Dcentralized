@@ -37,6 +37,12 @@ public class FirebaseAuthService {
         this.context = context;
     }
 
+    /**
+     * Logs a user in the database
+     *
+     * @return true if success else false
+     * @author Tom de Wildt
+     */
     public boolean login() {
         try {
             FirebaseUser user = auth.getCurrentUser();
@@ -62,6 +68,11 @@ public class FirebaseAuthService {
         }
     }
 
+    /**
+     * Logs a user out from the database
+     *
+     * @author Tom de Wildt
+     */
     public void logout() {
         auth.signOut();
     }

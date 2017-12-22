@@ -1,5 +1,10 @@
 package com.dcentralized.studywallet.models;
 
+/**
+ * This class represents a transaction in the application
+ *
+ * @author Tom de Wildt
+ */
 public class Transaction {
 	private String id;
 	private String name;

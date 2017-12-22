@@ -9,16 +9,28 @@ import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
 
 /**
+ * Authenticates with the database and set the current user
  *
  * @author Tom de Wildt
  */
 public class LoadingRunnable implements Runnable {
     private Context context;
 
+    /**
+     * LoadingRunnable constructor
+     *
+     * @param context activity context
+     * @author Tom de Wildt
+     */
     public LoadingRunnable(Context context) {
         this.context = context;
     }
 
+    /**
+     * Called when the runnable is activated
+     *
+     * @author Tom de Wildt
+     */
     @Override
     public void run() {
         try {

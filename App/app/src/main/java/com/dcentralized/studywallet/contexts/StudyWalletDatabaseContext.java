@@ -1,30 +1,41 @@
 package com.dcentralized.studywallet.contexts;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletContext;
 import com.dcentralized.studywallet.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.apache.commons.lang3.mutable.MutableObject;
-
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This class handles communication with the database
+ *
+ * @author Tom de Wildt
+ */
 public class StudyWalletDatabaseContext implements IStudyWalletContext {
     private static final String TAG = StudyWalletDatabaseContext.class.getSimpleName();
     private FirebaseFirestore database;
 
+    /**
+     * StudyWalletDatabaseContext constructor, creates the firestore database
+     *
+     * @author Tom de Wildt
+     */
     public StudyWalletDatabaseContext() {
         database = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * Checks if the user is in the database
+     *
+     * @param id userId
+     * @return true if user is in database
+     * @author Tom de Wildt
+     */
     @Override
     public boolean isUserInDatabase(String id) {
         try {
@@ -44,6 +55,13 @@ public class StudyWalletDatabaseContext implements IStudyWalletContext {
         }
     }
 
+    /**
+     * Add a user to the database
+     *
+     * @param user
+     * @return true if successful
+     * @author Tom de Wildt
+     */
     @Override
     public boolean addUserToDatabase(User user) {
         try {
@@ -58,6 +76,13 @@ public class StudyWalletDatabaseContext implements IStudyWalletContext {
         }
     }
 
+    /**
+     * Gets a user from the database
+     *
+     * @param id userId
+     * @return user or null
+     * @author Tom de Wildt
+     */
     @Override
     public User getUserFromDatabase(String id) {
         try {

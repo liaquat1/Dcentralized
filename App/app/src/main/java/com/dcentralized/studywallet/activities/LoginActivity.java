@@ -18,6 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This is the start activity of the application, it handles the FHICT Login
+ *
+ * @author Tom de Wildt
+ */
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private FontysAuthService service;
@@ -35,11 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
     /**
      * Handles the login button event
      *
@@ -53,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This methods gets called when de activity resumes
+     *
+     * @author Tom de Wildt
+     */
     @Override
     protected void onResume() {
         Intent intent = getIntent();

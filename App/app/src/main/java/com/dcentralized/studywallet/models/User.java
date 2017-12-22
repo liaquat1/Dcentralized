@@ -5,6 +5,11 @@ import com.google.firebase.firestore.Exclude;
 
 import java.util.*;
 
+/**
+ * This class represents a user in the application
+ *
+ * @author Tom de Wildt
+ */
 public class User {
     private String id;
 	private String firstname;
@@ -52,10 +57,20 @@ public class User {
 		this.repository = new UserRepository();
 	}
 
+    /**
+     * Gets the user's transactions from the database
+     *
+     * @author Tom de Wildt
+     */
 	public void getTransactionsFromDatabase() {
 	    transactions = repository.getTransactions(id);
     }
 
+    /**
+     * Gets the user's projects from the database
+     *
+     * @author Tom de Wildt
+     */
     public void getProjectsFromDatabase() {
 	    projects = repository.getProjects(id);
     }

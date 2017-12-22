@@ -27,14 +27,32 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This class handles communication with the database
+ *
+ * @author Tom de Wildt
+ */
 public class UserDatabaseContext implements IUserContext {
     private static final String TAG = UserDatabaseContext.class.getSimpleName();
     private FirebaseFirestore database;
 
+    /**
+     * UserDatabaseContext constructor, creates the firestore database
+     *
+     * @author Tom de Wildt
+     */
     public UserDatabaseContext() {
         database = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * Gets references from a collection in a document
+     *
+     * @param id userId
+     * @param collection transactions or projects
+     * @return empty list or list with references
+     * @author Tom de Wildt
+     */
     @Override
     public List<DocumentReference> getReferences(String id, String collection) {
         try {
@@ -51,6 +69,13 @@ public class UserDatabaseContext implements IUserContext {
         }
     }
 
+    /**
+     * Gets transactions from the database
+     *
+     * @param references list with transactions references
+     * @return empty list or list with transactions
+     * @author Tom de Wildt
+     */
     @Override
     public List<Transaction> getTransactions(List<DocumentReference> references) {
         List<Transaction> result = new ArrayList<>();
@@ -72,6 +97,13 @@ public class UserDatabaseContext implements IUserContext {
         }
     }
 
+    /**
+     * Gets projects from the database
+     *
+     * @param references list with project references
+     * @return empty list or list with projects
+     * @author Tom de Wildt
+     */
     @Override
     public List<Project> getProjects(List<DocumentReference> references) {
         List<Project> result = new ArrayList<>();
@@ -94,6 +126,13 @@ public class UserDatabaseContext implements IUserContext {
         }
     }
 
+    /**
+     * Gets a project owner
+     *
+     * @param reference to the document
+     * @return company or null
+     * @author Tom de Wildt
+     */
     @Override
     public Company getOwner(DocumentReference reference) {
         try {

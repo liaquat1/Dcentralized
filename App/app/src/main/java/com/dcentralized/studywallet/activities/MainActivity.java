@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
@@ -22,6 +21,11 @@ import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.models.User;
 
+/**
+ * This is the main activity for the application, it handles most of the GUI logic
+ *
+ * @author Tom de Wildt
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     /**
      * Initializes activity, sets toolbar, drawer & navigation view

@@ -9,8 +9,18 @@ import android.widget.Toast;
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.runnables.LoadingRunnable;
 
+/**
+ * This is the loading activity for the application, it displays a animation during the loading
+ *
+ * @author Tom de Wildt
+ */
 public class SplashActivity extends AppCompatActivity {
-
+    /**
+     * Initializes activity and starts a new thread
+     *
+     * @param savedInstanceState
+     * @author Tom de Wildt
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +29,11 @@ public class SplashActivity extends AppCompatActivity {
         new Thread(new LoadingRunnable(this)).start();
     }
 
+    /**
+     * Show a toast if an error occurred and transfers back to the login activity
+     *
+     * @author Tom de Wildt
+     */
     public void updateUI() {
         runOnUiThread(new Runnable() {
             @Override

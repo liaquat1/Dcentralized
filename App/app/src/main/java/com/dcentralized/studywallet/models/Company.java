@@ -2,6 +2,11 @@ package com.dcentralized.studywallet.models;
 
 import java.util.*;
 
+/**
+ * This class represents a company in the application
+ *
+ * @author Tom de Wildt
+ */
 public class Company {
 	private String id;
 	private String name;

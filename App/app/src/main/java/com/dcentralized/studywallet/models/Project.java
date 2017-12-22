@@ -4,6 +4,11 @@ import com.google.firebase.firestore.Exclude;
 
 import java.util.Date;
 
+/**
+ * This class represents a project in the application
+ *
+ * @author Tom de Wildt
+ */
 public class Project {
 	private String id;
 	private String name;

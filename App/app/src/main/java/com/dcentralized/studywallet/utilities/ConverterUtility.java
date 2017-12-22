@@ -8,9 +8,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Converts json objects to java objects
+ *
+ * @author Tom de Wildt
+ */
 public class ConverterUtility {
     private static final String TAG = ConverterUtility.class.getSimpleName();
 
+    /**
+     * Converts a json object to a user
+     *
+     * @param object contains id, givenName, surName, mail & employeeId
+     * @return user or null
+     * @author Tom de Wildt
+     */
     public static User jsonToUser(JSONObject object) {
         try {
             String id = object.getString("id");
@@ -27,6 +39,13 @@ public class ConverterUtility {
         }
     }
 
+    /**
+     * Converts a json object to a user type
+     *
+     * @param object containing affiliations array
+     * @return UserType.Unknown or the correct UserType
+     * @author Tom de Wildt
+     */
     public static UserType jsonToUserType(JSONObject object) {
         try {
             JSONArray array = object.getJSONArray("affiliations");
