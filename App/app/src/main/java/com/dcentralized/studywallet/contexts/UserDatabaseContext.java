@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,10 +20,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.apache.commons.lang3.mutable.MutableObject;
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
 
 public class UserDatabaseContext implements IUserContext {
     private static final String TAG = UserDatabaseContext.class.getSimpleName();
@@ -33,51 +36,35 @@ public class UserDatabaseContext implements IUserContext {
     }
 
     @Override
-    public List<DocumentReference> getReferences(String id, final String collection) {
-        final CountDownLatch latch = new CountDownLatch(1);
-        final List<DocumentReference> result = new ArrayList<>();
-
+    public List<DocumentReference> getReferences(String id, String collection) {
         try {
             DocumentReference reference = database.collection("users").document(id);
-            reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        result.addAll((ArrayList<DocumentReference>)task.getResult().get(collection));
-                    } else {
-                        Log.d(TAG, "Get failed with ", task.getException());
-                    }
-                    latch.countDown();
-                }
-            });
-            latch.await();
-            return result;
+            DocumentSnapshot document = Tasks.await(reference.get());
+
+            return new ArrayList<>((ArrayList<DocumentReference>)document.get(collection));
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return new ArrayList<>();
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
-            return result;
+            return new ArrayList<>();
         }
     }
 
     @Override
     public List<Transaction> getTransactions(List<DocumentReference> references) {
-        final CountDownLatch latch = new CountDownLatch(1);
-        final List<Transaction> result = new ArrayList<>();
-
+        List<Transaction> result = new ArrayList<>();
         try {
             for (DocumentReference reference : references) {
-                reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            result.add(task.getResult().toObject(Transaction.class));
-                        } else {
-                            Log.e(TAG, "Get failed with ", task.getException());
-                        }
-                        latch.countDown();
-                    }
-                });
+                DocumentSnapshot document = Tasks.await(reference.get());
+                Transaction transaction = document.toObject(Transaction.class);
+                transaction.setId(document.getId());
+                result.add(transaction);
             }
-            latch.await();
+
+            return result;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
             return result;
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
@@ -87,26 +74,19 @@ public class UserDatabaseContext implements IUserContext {
 
     @Override
     public List<Project> getProjects(List<DocumentReference> references) {
-        final CountDownLatch latch = new CountDownLatch(1);
-        final List<Project> result = new ArrayList<>();
-
+        List<Project> result = new ArrayList<>();
         try {
             for (DocumentReference reference : references) {
-                reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            Project project = task.getResult().toObject(Project.class);
-                            project.setOwner(getOwner((DocumentReference)task.getResult().getData().get("owner")));
-                            result.add(project);
-                        } else {
-                            Log.e(TAG, "Get failed with ", task.getException());
-                        }
-                        latch.countDown();
-                    }
-                });
+                DocumentSnapshot document = Tasks.await(reference.get());
+                Project project = document.toObject(Project.class);
+                project.setId(document.getId());
+                project.setOwner(getOwner((DocumentReference)document.get("owner")));
+                result.add(project);
             }
-            latch.await();
+
+            return result;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
             return result;
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
@@ -116,29 +96,14 @@ public class UserDatabaseContext implements IUserContext {
 
     @Override
     public Company getOwner(DocumentReference reference) {
-        final CountDownLatch latch = new CountDownLatch(1);
-        final MutableObject<Company> result = new MutableObject<>();
-
         try {
-            reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        result.setValue(task.getResult().toObject(Company.class));
-                    } else {
-                        Log.e(TAG, "Get failed with ", task.getException());
-                        result.setValue(null);
-                    }
-                    latch.countDown();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.e(TAG, "Get failed with ", e);
-                }
-            });
-            latch.await();
-            return result.getValue();
+            DocumentSnapshot document = Tasks.await(reference.get());
+            Company company = document.toObject(Company.class);
+            company.setId(document.getId());
+            return company;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return null;
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
             return null;
