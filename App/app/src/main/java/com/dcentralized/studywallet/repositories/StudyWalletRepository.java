@@ -4,15 +4,16 @@ import android.content.Context;
 
 import com.dcentralized.studywallet.contexts.FontysAPIContext;
 import com.dcentralized.studywallet.contexts.StudyWalletDatabaseContext;
-import com.dcentralized.studywallet.contexts.interfaces.IFontysAPIContext;
-import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletDatabaseContext;
+import com.dcentralized.studywallet.contexts.interfaces.IFontysContext;
+import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletContext;
 import com.dcentralized.studywallet.models.User;
+import com.dcentralized.studywallet.utilities.ConverterUtility;
 
 import org.json.JSONObject;
 
 public class StudyWalletRepository {
-    private IFontysAPIContext fontysContext;
-    private IStudyWalletDatabaseContext databaseContext;
+    private IFontysContext fontysContext;
+    private IStudyWalletContext databaseContext;
 
     public StudyWalletRepository(Context context) {
         fontysContext = new FontysAPIContext(context);
@@ -23,22 +24,23 @@ public class StudyWalletRepository {
         return fontysContext.getCurrentUserId();
     }
 
-    public boolean isUserInDatabase() {
-        String id = fontysContext.getCurrentUserId();
+    public boolean isUserInDatabase(String id) {
         return databaseContext.isUserInDatabase(id);
     }
 
     public void addUserToDatabase(User user) {
-        databaseContext.addUserToDatabase(user.getId(), user.getFirstname(), user.getLastname(), user.getEmployeeId(), user.getEmail(), user.getType().toString());
+        databaseContext.addUserToDatabase(user);
     }
 
     public User getUserFromFontys() {
         JSONObject object = fontysContext.getCurrentUser();
-        // TODO: convert JSON to User
-        return null;
+        return ConverterUtility.jsonToUser(object);
     }
 
     public User getUserFromDatabase(String id) {
-        return databaseContext.getUserFromDatabase(id);
+        User user = databaseContext.getUserFromDatabase(id);
+        user.getTransactionsFromDatabase();
+        user.getProjectsFromDatabase();
+        return user;
     }
 }

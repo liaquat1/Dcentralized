@@ -3,7 +3,7 @@ package com.dcentralized.studywallet.contexts;
 import android.content.Context;
 import android.util.Log;
 
-import com.dcentralized.studywallet.contexts.interfaces.IFontysAPIContext;
+import com.dcentralized.studywallet.contexts.interfaces.IFontysContext;
 import com.dcentralized.studywallet.services.FontysAuthService;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class FontysAPIContext implements IFontysAPIContext {
+public class FontysAPIContext implements IFontysContext {
     private static final String TAG = FontysAPIContext.class.getSimpleName();
     private SyncHttpClient client;
 
@@ -37,6 +37,27 @@ public class FontysAPIContext implements IFontysAPIContext {
                     Log.e(TAG, "JSONException occurred", e);
                     id.setValue(null);
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                id.setValue(null);
+            }
+        });
+
+        return id.getValue();
+    }
+
+    @Override
+    public JSONObject getCurrentUser() {
+        final MutableObject<JSONObject> id = new MutableObject<>();
+
+        client.get("https://api.fhict.nl/people/me", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                id.setValue(response);
             }
 
             @Override

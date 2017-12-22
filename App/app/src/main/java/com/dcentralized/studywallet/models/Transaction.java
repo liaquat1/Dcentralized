@@ -5,6 +5,15 @@ public class Transaction {
 	private String name;
 	private int amount;
 
+	/**
+	 * Empty constructor for loading from firestore
+	 *
+	 * @author Tom de Wildt
+	 */
+	public Transaction() {
+		// Empty
+	}
+
 	public String getId() {
 		return this.id;
 	}

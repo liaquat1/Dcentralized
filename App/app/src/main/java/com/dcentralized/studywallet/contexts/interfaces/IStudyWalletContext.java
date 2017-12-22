@@ -4,6 +4,6 @@ import com.dcentralized.studywallet.models.User;
 
 public interface IStudyWalletDatabaseContext {
     boolean isUserInDatabase(String id);
-    void addUserToDatabase(String id, String firstname, String lastname, int employeeId, String email, String type);
+    boolean addUserToDatabase(User user);
     User getUserFromDatabase(String id);
 }
