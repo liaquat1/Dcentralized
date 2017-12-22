@@ -16,8 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.models.StudyWallet;
+import com.dcentralized.studywallet.models.User;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     /**
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Set Navigation View
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Set UI
+        setupUI();
     }
 
     /**
@@ -121,4 +127,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * Sets up the UI
+     *
+     * @author Tom de Wildt
+     */
+    public void setupUI() {
+        User user = StudyWallet.getInstance(this).getCurrentUser();
+        View header = ((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+        TextView name = header.findViewById(R.id.textName);
+        TextView email = header.findViewById(R.id.textEmail);
+
+        name.setText(String.format("%s %s", user.getFirstname(), user.getLastname()));
+        email.setText(user.getEmail());
+    }
 }

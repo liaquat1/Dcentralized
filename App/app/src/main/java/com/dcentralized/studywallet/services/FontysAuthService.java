@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.activities.SplashActivity;
+import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.utilities.DateUtility;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -189,6 +190,10 @@ public class FontysAuthService {
         if (instance == null) {
             instance = new FontysAuthService(context);
         }
+        if (instance.context != context) {
+            instance.context = context;
+        }
+
         return instance;
     }
 }

@@ -5,12 +5,14 @@ import android.content.Context;
 import android.util.Log;
 
 import com.dcentralized.studywallet.activities.LoginActivity;
+import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.utilities.ConverterUtility;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.net.ConnectException;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -75,6 +77,10 @@ public class FirebaseAuthService {
         if (instance == null) {
             instance = new FirebaseAuthService(context);
         }
+        if (instance.context != context) {
+            instance.context = context;
+        }
+
         return instance;
     }
 }
