@@ -1,5 +1,6 @@
 package com.dcentralized.studywallet.fragments;
 
+
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,11 +10,11 @@ import android.view.ViewGroup;
 import com.dcentralized.studywallet.R;
 
 /**
- * Fragment to view transfer coins
+ * Fragment to view account
  *
  * @author Tom de Wildt
  */
-public class TransferFragment extends Fragment {
+public class AccountFragment extends Fragment {
     private View layout;
 
     /**
@@ -21,7 +22,7 @@ public class TransferFragment extends Fragment {
      *
      * @author Tom de Wildt
      */
-    public TransferFragment() {
+    public AccountFragment() {
         // Required empty public constructor
     }
 
@@ -37,7 +38,7 @@ public class TransferFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        layout = inflater.inflate(R.layout.fragment_transfer, container, false);
+        layout = inflater.inflate(R.layout.fragment_account, container, false);
 
         return layout;
     }

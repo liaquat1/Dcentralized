@@ -38,7 +38,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        layout = inflater.inflate(R.layout.fragment_projects, container, false);
+        layout = inflater.inflate(R.layout.fragment_settings, container, false);
 
         return layout;
     }

@@ -16,8 +16,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.fragments.AccountFragment;
+import com.dcentralized.studywallet.fragments.AllProjectsFragment;
 import com.dcentralized.studywallet.fragments.DashboardFragment;
 import com.dcentralized.studywallet.fragments.ProjectsFragment;
+import com.dcentralized.studywallet.fragments.RankingFragment;
 import com.dcentralized.studywallet.fragments.SettingsFragment;
 import com.dcentralized.studywallet.fragments.TransferFragment;
 import com.dcentralized.studywallet.models.StudyWallet;
@@ -112,12 +115,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Do transaction
         switch (id) {
             case R.id.nav_rankings:
-                // TODO: create rank fragment
-                fragment = new DashboardFragment();
+                fragment = new RankingFragment();
                 break;
             case R.id.nav_all_projects:
-                // TODO: create all projects list fragment
-                fragment = new DashboardFragment();
+                fragment = new AllProjectsFragment();
                 break;
             case R.id.nav_transfer:
                 fragment = new TransferFragment();
@@ -126,8 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new ProjectsFragment();
                 break;
             case R.id.nav_account:
-                // TODO: create account fragment
-                fragment = new DashboardFragment();
+                fragment = new AccountFragment();
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
