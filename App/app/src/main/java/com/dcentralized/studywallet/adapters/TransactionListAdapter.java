@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Liwei Hu
  */
-public class TransactionAdapter extends ArrayAdapter<Transaction> {
+public class TransactionListAdapter extends ArrayAdapter<Transaction> {
     private ViewHolder viewHolder;
 
     /**
@@ -33,19 +33,19 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
     }
 
     /**
-     * TransactionAdapter constructor
+     * TransactionListAdapter constructor
      *
      * @param context
      * @param id
      * @param items
      * @author Liwei Hu
      */
-    public TransactionAdapter(Context context, int id, List items){
+    public TransactionListAdapter(Context context, int id, List items){
         super(context, id, items);
     }
 
     /**
-     * Called by android, to retrieve a item
+     * Called by android to retrieve a item
      *
      * @param position item position
      * @param view element on screen

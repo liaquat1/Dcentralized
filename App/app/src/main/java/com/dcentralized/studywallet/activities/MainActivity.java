@@ -111,11 +111,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Do transaction
         switch (id) {
+            case R.id.nav_rankings:
+                // TODO: create rank fragment
+                fragment = new DashboardFragment();
+                break;
+            case R.id.nav_all_projects:
+                // TODO: create all projects list fragment
+                fragment = new DashboardFragment();
+                break;
             case R.id.nav_transfer:
                 fragment = new TransferFragment();
                 break;
             case R.id.nav_projects:
                 fragment = new ProjectsFragment();
+                break;
+            case R.id.nav_account:
+                // TODO: create account fragment
+                fragment = new DashboardFragment();
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();

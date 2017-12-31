@@ -6,12 +6,18 @@
 
     <!-- Navigation Items -->
     <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_rankings">Rankings</string>
+    <string name="nav_all_projects">Projects</string>
+    <string name="nav_title_personal">Personal</string>
     <string name="nav_transfer">Transfer</string>
     <string name="nav_projects">Projects</string>
+    <string name="nav_title_settings">Settings</string>
+    <string name="nav_account">Account</string>
     <string name="nav_settings">Settings</string>
 
     <!-- Content Descriptions -->
     <string name="image_view_logo">Study Coin Logo</string>
+    <string name="image_project_logo">Project Language Logo</string>
 
     <!-- Buttons -->
     <string name="button_login">LOGIN</string>

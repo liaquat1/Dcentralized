@@ -50,9 +50,11 @@ public class ProjectListAdapter extends ArrayAdapter<ProjectListItem>{
         if(item != null){
             viewHolder.languagePicture.setImageDrawable(item.getLanguagePicture());
             viewHolder.languagePicture.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
             viewHolder.projectShortDescription.setText(item.getProjectShortDescription());
             viewHolder.projectShortDescription.setBackgroundColor(Color.parseColor("#F3AB3B"));
             viewHolder.projectShortDescription.setTextColor(Color.parseColor("#333333"));
+
             viewHolder.projectLanguage.setText(item.getProjectLanguageString());
             viewHolder.projectLanguage.setBackgroundColor(Color.parseColor("#F3AB3B"));
             viewHolder.projectLanguage.setTextColor(Color.parseColor("#3A3A3A"));

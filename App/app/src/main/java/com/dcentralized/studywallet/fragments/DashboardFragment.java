@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.activities.MainActivity;
-import com.dcentralized.studywallet.adapters.TransactionAdapter;
+import com.dcentralized.studywallet.adapters.TransactionListAdapter;
 import com.dcentralized.studywallet.models.StudyWallet;
 
 /**
@@ -57,7 +57,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
         Activity activity = getActivity();
         textCoins.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getBalance()));
         textRank.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getRankFromDatabase()));
-        listTransactions.setAdapter(new TransactionAdapter(activity, R.layout.transaction_list_item, StudyWallet.getInstance(activity).getCurrentUser().getTransactions()));
+        listTransactions.setAdapter(new TransactionListAdapter(activity, R.layout.transaction_list_item, StudyWallet.getInstance(activity).getCurrentUser().getTransactions()));
 
         return layout;
     }
