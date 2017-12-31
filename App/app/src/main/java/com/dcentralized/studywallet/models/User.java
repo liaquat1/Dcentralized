@@ -75,6 +75,17 @@ public class User {
 	    projects = repository.getProjects(id);
     }
 
+	/**
+	 * Gets the user's rank from database
+	 *
+	 * @return rank number
+     * @author Tom de Wildt
+	 */
+	public int getRankFromDatabase() {
+    	// TODO: get rank from database
+		return 0;
+	}
+
     @Exclude
 	public String getId() {
 		return this.id;

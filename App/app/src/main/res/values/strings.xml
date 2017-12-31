@@ -4,9 +4,19 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- Navigation Items -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_transfer">Transfer</string>
+    <string name="nav_projects">Projects</string>
+    <string name="nav_settings">Settings</string>
+
     <!-- Content Descriptions -->
     <string name="image_view_logo">Study Coin Logo</string>
 
     <!-- Buttons -->
     <string name="button_login">LOGIN</string>
+    <string name="button_add_project">+Project</string>
+
+    <!-- Text -->
+    <string name="text_history">History</string>
 </resources>

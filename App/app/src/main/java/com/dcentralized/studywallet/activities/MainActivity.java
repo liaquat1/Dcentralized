@@ -4,8 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +16,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.fragments.DashboardFragment;
+import com.dcentralized.studywallet.fragments.ProjectsFragment;
+import com.dcentralized.studywallet.fragments.SettingsFragment;
+import com.dcentralized.studywallet.fragments.TransferFragment;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.models.User;
 
@@ -103,13 +105,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * @param id of the navigation item
      * @author Tom de Wildt
      */
-    private void changeFragment(int id) {
+    public void changeFragment(int id) {
         FragmentManager manager = getFragmentManager();
-        Fragment fragment = null;
+        Fragment fragment;
 
         // Do transaction
         switch (id) {
-
+            case R.id.nav_transfer:
+                fragment = new TransferFragment();
+                break;
+            case R.id.nav_projects:
+                fragment = new ProjectsFragment();
+                break;
+            case R.id.nav_settings:
+                fragment = new SettingsFragment();
+                break;
+            default:
+                fragment = new DashboardFragment();
+                break;
         }
         manager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
@@ -144,5 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         name.setText(String.format("%s %s", user.getFirstname(), user.getLastname()));
         email.setText(user.getEmail());
+
+        changeFragment(R.id.nav_dashboard);
     }
 }
