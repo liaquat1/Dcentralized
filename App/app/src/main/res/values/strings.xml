@@ -24,7 +24,13 @@
     <string name="button_add_project">+Project</string>
 
     <!-- Text -->
-    <string name="text_history">History</string>
+    <string name="text_history">History: </string>
+    <string name="text_name">Name: </string>
+    <string name="text_email">Email: </string>
+    <string name="text_id">Student ID: </string>
+    <string name="text_balance">Balance: </string>
+    <string name="text_total_coins">Total Coins: </string>
+    <string name="text_type">Type: </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
