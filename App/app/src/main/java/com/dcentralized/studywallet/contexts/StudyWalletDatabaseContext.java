@@ -42,7 +42,7 @@ public class StudyWalletDatabaseContext implements IStudyWalletContext {
             DocumentReference reference = database.collection("users").document(id);
             DocumentSnapshot document = Tasks.await(reference.get());
 
-            if (document != null) {
+            if (document.exists()) {
                 return true;
             }
             return false;
