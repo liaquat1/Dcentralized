@@ -6,6 +6,8 @@ import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
 import com.dcentralized.studywallet.services.StorageService;
 
+import java.util.List;
+
 /**
  * This is the main class for the system
  *
@@ -58,7 +60,17 @@ public class StudyWallet {
         return false;
     }
 
-	/**
+    /**
+     * Gets all projects from database
+     *
+     * @author Tom de Wildt
+     * @return list of projects
+     */
+    public List<Project> getAllProjects() {
+        return repository.getAllProjects();
+    }
+
+    /**
 	 * Returns the instance of the study wallet, if it's null it will create a new one
 	 *
 	 * @param context the activity

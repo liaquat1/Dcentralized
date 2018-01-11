@@ -7,7 +7,7 @@ android:background="@color/colorBackground"
 tools:context="com.dcentralized.studywallet.fragments.AllProjectsFragment">
 
 <ListView
-    android:id="@+id/lvProjects"
+    android:id="@+id/listAllProjects"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginBottom="8dp"

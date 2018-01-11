@@ -1,15 +1,21 @@
 package com.dcentralized.studywallet.repositories;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.dcentralized.studywallet.contexts.FontysAPIContext;
 import com.dcentralized.studywallet.contexts.StudyWalletDatabaseContext;
 import com.dcentralized.studywallet.contexts.interfaces.IFontysContext;
 import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletContext;
+import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.User;
+import com.dcentralized.studywallet.tasks.ProjectTask;
 import com.dcentralized.studywallet.utilities.ConverterUtility;
 
 import org.json.JSONObject;
+
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Handles communication with the fontys context and database context
@@ -17,6 +23,7 @@ import org.json.JSONObject;
  * @author Tom de Wildt
  */
 public class StudyWalletRepository {
+    private static final String TAG = StudyWalletRepository.class.getSimpleName();
     private IFontysContext fontysContext;
     private IStudyWalletContext databaseContext;
 
@@ -84,5 +91,24 @@ public class StudyWalletRepository {
         user.getTransactionsFromDatabase();
         user.getProjectsFromDatabase();
         return user;
+    }
+
+    /**
+     * Gets all projects from the database context
+     *
+     * @return list of projects
+     * @author Tom de Wildt
+     */
+    public List<Project> getAllProjects() {
+        try {
+            ProjectTask task = new ProjectTask();
+            return task.execute().get();
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return null;
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+            return null;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class User {
 	private UserType type;
 	private int balance;
 	private int totalCoins;
+	private int rank;
 	private List<Transaction> transactions;
 	private List<Project> projects;
 	private UserRepository repository;
@@ -82,8 +83,8 @@ public class User {
      * @author Tom de Wildt
 	 */
 	@Exclude
-	public int getRankFromDatabase() {
-    	return repository.getRank(id);
+	public void getRankFromDatabase() {
+    	rank = repository.getRank(id);
 	}
 
     @Exclude
@@ -114,6 +115,13 @@ public class User {
 	public int getTotalCoins() {
 		return this.totalCoins;
 	}
+	@Exclude
+    public int getRank() {
+	    if (rank == 0) {
+	        getRankFromDatabase();
+        }
+        return rank;
+    }
     @Exclude
 	public List<Transaction> getTransactions() {
 		return Collections.unmodifiableList(transactions);

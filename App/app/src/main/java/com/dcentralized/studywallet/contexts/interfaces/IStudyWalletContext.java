@@ -1,6 +1,9 @@
 package com.dcentralized.studywallet.contexts.interfaces;
 
+import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.User;
+
+import java.util.List;
 
 /**
  * This class handles communication with the database

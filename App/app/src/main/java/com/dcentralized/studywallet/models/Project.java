@@ -24,6 +24,7 @@ public class Project {
 	private int reward;
 	private Date time;
 	private boolean finished;
+	private boolean taken;
 
 	/**
 	 * Empty constructor for loading from firestore
@@ -104,5 +105,8 @@ public class Project {
 	}
 	public boolean getFinished() {
 		return this.finished;
+	}
+	public boolean getTaken() {
+		return this.taken;
 	}
 }
