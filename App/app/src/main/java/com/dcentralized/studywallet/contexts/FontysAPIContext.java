@@ -59,6 +59,7 @@ public class FontysAPIContext implements IFontysContext {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.e(TAG, "Connection failed", throwable);
                 id.setValue(null);
             }
         });

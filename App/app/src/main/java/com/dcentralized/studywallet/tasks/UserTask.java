@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class UserTask extends AsyncTask<Void, Void, List<User>> {
     @Override
     protected List<User> doInBackground(Void... voids) {
         try {
-            QuerySnapshot snapshot = Tasks.await(database.collection("users").orderBy("totalCoins").get());
+            QuerySnapshot snapshot = Tasks.await(database.collection("users").orderBy("totalCoins", Query.Direction.DESCENDING).get());
             List<User> users = new ArrayList<>();
 
             for (DocumentSnapshot document : snapshot.getDocuments()) {
