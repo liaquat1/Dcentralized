@@ -28,6 +28,7 @@ public class ProjectsListAdapter extends ArrayAdapter<Project> {
      * @author Liwei Hu
      */
     private static class ViewHolder {
+        private String id;
         private TextView textLanguage;
         private TextView textDescription;
         private ImageView imageProjectLogo;
@@ -70,7 +71,17 @@ public class ProjectsListAdapter extends ArrayAdapter<Project> {
 
         Project item = getItem(position);
         if(item != null){
-            viewHolder.textLanguage.setText(String.valueOf(item.getLanguage()));
+
+            switch(item.getLanguage()){
+                case CS:
+                    viewHolder.textLanguage.setText("C#");
+                    break;
+                case CPP:
+                    viewHolder.textLanguage.setText("C++");
+                    break;
+                default:
+                    viewHolder.textLanguage.setText(String.valueOf(item.getLanguage()));
+            }
             viewHolder.textLanguage.setTextColor(getContext().getResources().getColor(R.color.colorAccent));
             viewHolder.textLanguage.setBackgroundColor(getContext().getResources().getColor(R.color.colorPrimary));
 

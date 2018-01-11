@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.dcentralized.studywallet.R;
@@ -44,6 +45,13 @@ public class ProjectsFragment extends Fragment {
         layout = inflater.inflate(R.layout.fragment_projects, container, false);
         listProjects = layout.findViewById(R.id.listProjects);
         listProjects.setAdapter(new ProjectsListAdapter(getActivity(), R.id.listProjects, StudyWallet.getInstance(getActivity()).getCurrentUser().getProjects()));
+
+        listProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listProjects.getSelectedItem();
+            }
+        });
 
         return layout;
     }

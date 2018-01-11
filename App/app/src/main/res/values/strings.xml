@@ -31,6 +31,7 @@
     <string name="text_balance">Balance: </string>
     <string name="text_total_coins">Total Coins: </string>
     <string name="text_type">Type: </string>
+    <string name="text_test">With this Java project, you will be challenged to create an drawing application from scratch using JavaFX for the GUI.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

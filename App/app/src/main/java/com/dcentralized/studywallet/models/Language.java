@@ -18,5 +18,6 @@ public enum Language {
 	PHP,
 	Swift,
 	Kotlin,
-	Android
+	Android,
+	HTML
 }

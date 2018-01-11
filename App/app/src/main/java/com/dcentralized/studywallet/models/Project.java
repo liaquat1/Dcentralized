@@ -47,7 +47,7 @@ public class Project {
 			case Java:
 				return context.getResources().getDrawable(R.drawable.java_logo);
 			case CS:
-				return context.getResources().getDrawable(R.drawable.cs_logo);
+				return context.getResources().getDrawable(R.drawable.chastag_logo);
 			case Python:
 				return context.getResources().getDrawable(R.drawable.python_logo);
 			case Javascript:
@@ -70,6 +70,8 @@ public class Project {
 				return context.getResources().getDrawable(R.drawable.kotlin_logo);
 			case Android:
 				return context.getResources().getDrawable(R.drawable.android_logo);
+			case HTML:
+				return context.getResources().getDrawable(R.drawable.html_logo);
 			default:
 				return new ColorDrawable(Color.TRANSPARENT);
 		}
