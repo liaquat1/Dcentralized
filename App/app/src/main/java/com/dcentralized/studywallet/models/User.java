@@ -81,9 +81,9 @@ public class User {
 	 * @return rank number
      * @author Tom de Wildt
 	 */
+	@Exclude
 	public int getRankFromDatabase() {
-    	// TODO: get rank from database
-		return 0;
+    	return repository.getRank(id);
 	}
 
     @Exclude
