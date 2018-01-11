@@ -33,15 +33,11 @@ public class LoadingRunnable implements Runnable {
      */
     @Override
     public void run() {
-        try {
-            if (FirebaseAuthService.getInstance(context).login()) {
-                StudyWallet.getInstance(context).setCurrentUser();
-            } else {
-                ((SplashActivity)context).updateUI();
-            }
-        } finally {
+        if (FirebaseAuthService.getInstance(context).login() && StudyWallet.getInstance(context).setCurrentUser()) {
             Intent i = new Intent(context, MainActivity.class);
             context.startActivity(i);
+        } else {
+            ((SplashActivity)context).updateUI();
         }
     }
 }

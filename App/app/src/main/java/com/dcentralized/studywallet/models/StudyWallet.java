@@ -34,17 +34,25 @@ public class StudyWallet {
      * Checks if user is in database else creates a new user from the fontys database
      *
      * @author Tom de Wildt
+	 * @return true if successful
      */
-    public void setCurrentUser() {
+    public boolean setCurrentUser() {
         String id = repository.getUserId();
 
-        if (repository.isUserInDatabase(id)) {
-            currentUser = repository.getUserFromDatabase(id);
-        } else {
-            User user = repository.getUserFromFontys();
-            repository.addUserToDatabase(user);
-            currentUser = user;
+        if (id != null) {
+            if (repository.isUserInDatabase(id)) {
+                currentUser = repository.getUserFromDatabase(id);
+                return true;
+            } else {
+                User user = repository.getUserFromFontys();
+                if (user != null) {
+                    repository.addUserToDatabase(user);
+                    currentUser = user;
+                    return true;
+                }
+            }
         }
+        return false;
     }
 
 	/**

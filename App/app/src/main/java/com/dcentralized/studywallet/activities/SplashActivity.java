@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
-                Toast.makeText(SplashActivity.this, "Database connection failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SplashActivity.this, "Database connection failed. Please try again.", Toast.LENGTH_SHORT).show();
             }
         });
     }
