@@ -1,5 +1,6 @@
 package com.dcentralized.studywallet.models;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -7,7 +8,7 @@ import java.util.*;
  *
  * @author Tom de Wildt
  */
-public class Company {
+public class Company implements Serializable{
 	private String id;
 	private String name;
 	private String description;

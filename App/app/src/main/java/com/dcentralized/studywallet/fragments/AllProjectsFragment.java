@@ -1,8 +1,8 @@
 package com.dcentralized.studywallet.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.activities.ProjectActivity;
 import com.dcentralized.studywallet.adapters.ProjectsListAdapter;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.StudyWallet;
@@ -54,7 +55,9 @@ public class AllProjectsFragment extends Fragment {
         listProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("Testerino", "memefcdas");
+                Intent intent = new Intent(getActivity(), ProjectActivity.class);
+                intent.putExtra("project", (Project)parent.getItemAtPosition(position));
+                getActivity().startActivity(intent);
             }
         });
         return layout;
