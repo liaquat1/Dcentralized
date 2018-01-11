@@ -8,7 +8,11 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -66,6 +70,12 @@ public class StudyWalletDatabaseContext implements IStudyWalletContext {
     public boolean addUserToDatabase(User user) {
         try {
             Tasks.await(database.collection("users").document(user.getId()).set(user));
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("projects", new ArrayList<>());
+            map.put("transactions", new ArrayList<>());
+
+            Tasks.await(database.collection("users").document(user.getId()).set(map, SetOptions.merge()));
             return true;
         } catch (ExecutionException e) {
             Log.e(TAG, "ExecutionException occurred", e);

@@ -118,7 +118,7 @@ public class User {
 	public List<Transaction> getTransactions() {
 		return Collections.unmodifiableList(transactions);
 	}
-    @Exclude
+	@Exclude
 	public List<Project> getProjects() {
 	    return Collections.unmodifiableList(projects);
     }
