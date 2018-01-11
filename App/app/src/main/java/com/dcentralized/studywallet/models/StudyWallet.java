@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
+import com.dcentralized.studywallet.services.StorageService;
 
 /**
  * This is the main class for the system
@@ -42,12 +43,14 @@ public class StudyWallet {
         if (id != null) {
             if (repository.isUserInDatabase(id)) {
                 currentUser = repository.getUserFromDatabase(id);
+				StorageService.getInstance(context).storeValue(StorageService.ID_PREF_KEY, currentUser.getId());
                 return true;
             } else {
                 User user = repository.getUserFromFontys();
                 if (user != null) {
                     repository.addUserToDatabase(user);
                     currentUser = user;
+                    StorageService.getInstance(context).storeValue(StorageService.ID_PREF_KEY, currentUser.getId());
                     return true;
                 }
             }
