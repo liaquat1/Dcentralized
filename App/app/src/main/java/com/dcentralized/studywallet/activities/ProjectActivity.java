@@ -25,7 +25,7 @@ public class ProjectActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.tvProjectDate)).setText(formatter.format(project.getTime()));
         ((TextView)findViewById(R.id.tvProjectCoins)).setText(String.valueOf(project.getReward()));
         ((TextView)findViewById(R.id.tvProjectDescription)).setText(project.getDescription());
-        ((TextView)findViewById(R.id.tvProjectDifficulty)).setText(project.getName()); //Here comes the difficulty
+        ((TextView)findViewById(R.id.tvProjectDifficulty)).setText(String.valueOf(project.getDifficulty()));
         ((ImageView) findViewById(R.id.ivLogo)).setImageDrawable(project.getLogo(this));
         getSupportActionBar().setTitle(project.getName());
     }

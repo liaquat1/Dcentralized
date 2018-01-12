@@ -33,8 +33,7 @@
                 style="@style/AppTheme.ProjectTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="6 Weeks" />
+                android:layout_weight="10"/>
 
         </LinearLayout>
 
@@ -57,8 +56,7 @@
                 style="@style/AppTheme.ProjectTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="6.5/10" />
+                android:layout_weight="10" />
 
         </LinearLayout>
 
@@ -81,8 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/AppTheme.ProjectTextStyle"
-                android:layout_weight="10"
-                android:text="400" />
+                android:layout_weight="10" />
 
         </LinearLayout>
 
@@ -105,8 +102,7 @@
                 style="@style/AppTheme.ProjectTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:text="@string/text_test" />
+                android:layout_weight="10" />
         </LinearLayout>
 
         <Button
@@ -118,7 +114,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="120dp"
             android:background="@drawable/bg_round_corner"
-            android:text="Apply"
+            android:text="@string/button_apply"
             android:textColor="@color/colorAccent" />
 
     </LinearLayout>

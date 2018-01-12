@@ -49,7 +49,7 @@ public class Project implements Serializable{
 			case Java:
 				return context.getResources().getDrawable(R.drawable.java_logo);
 			case CS:
-				return context.getResources().getDrawable(R.drawable.chastag_logo);
+				return context.getResources().getDrawable(R.drawable.cs_marcel_logo);
 			case Python:
 				return context.getResources().getDrawable(R.drawable.python_logo);
 			case Javascript:
