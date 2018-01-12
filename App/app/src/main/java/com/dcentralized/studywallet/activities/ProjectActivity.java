@@ -3,6 +3,8 @@ package com.dcentralized.studywallet.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,12 +23,17 @@ public class ProjectActivity extends AppCompatActivity {
         project = (Project)getIntent().getSerializableExtra("project");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        ((TextView)findViewById(R.id.tvProjectDate)).setText(formatter.format(project.getTime()));
+        ((TextView)findViewById(R.id.tvProjectDate)).setText((new SimpleDateFormat("dd-MM-yyyy")).format(project.getTime()));
         ((TextView)findViewById(R.id.tvProjectCoins)).setText(String.valueOf(project.getReward()));
         ((TextView)findViewById(R.id.tvProjectDescription)).setText(project.getDescription());
         ((TextView)findViewById(R.id.tvProjectDifficulty)).setText(project.getName()); //Here comes the difficulty
         ((ImageView) findViewById(R.id.ivLogo)).setImageDrawable(project.getLogo(this));
         getSupportActionBar().setTitle(project.getName());
+        findViewById(R.id.btnApply).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

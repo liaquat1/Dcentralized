@@ -52,8 +52,8 @@ public class AccountFragment extends Fragment {
         ((TextView)layout.findViewById(R.id.tvAccountName)).setText(user.getFirstname() + " " + user.getLastname());
         ((TextView)layout.findViewById(R.id.tvAccountEmail)).setText(user.getEmail());
         ((TextView)layout.findViewById(R.id.tvAccountStudentId)).setText(user.getId());
-        ((TextView)layout.findViewById(R.id.tvBalance)).setText(user.getBalance());
-        ((TextView)layout.findViewById(R.id.tvTotalCoins)).setText(user.getTotalCoins());
+        ((TextView)layout.findViewById(R.id.tvBalance)).setText(String.valueOf(user.getBalance()));
+        ((TextView)layout.findViewById(R.id.tvTotalCoins)).setText(String.valueOf(user.getTotalCoins()));
         ((TextView)layout.findViewById(R.id.tvType)).setText(user.getType().toString());
     }
 }
