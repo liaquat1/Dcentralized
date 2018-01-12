@@ -1,21 +1,15 @@
 package com.dcentralized.studywallet.repositories;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.dcentralized.studywallet.contexts.FontysAPIContext;
 import com.dcentralized.studywallet.contexts.StudyWalletDatabaseContext;
 import com.dcentralized.studywallet.contexts.interfaces.IFontysContext;
 import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletContext;
-import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.User;
-import com.dcentralized.studywallet.tasks.ProjectTask;
 import com.dcentralized.studywallet.utilities.ConverterUtility;
 
 import org.json.JSONObject;
-
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Handles communication with the fontys context and database context

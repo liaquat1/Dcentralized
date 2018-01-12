@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.activities.SplashActivity;
-import com.dcentralized.studywallet.contexts.FontysAPIContext;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
 

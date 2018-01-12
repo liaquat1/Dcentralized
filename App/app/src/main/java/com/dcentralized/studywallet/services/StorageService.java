@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.dcentralized.studywallet.utilities.DateUtility;
-
 /**
  * This class handles storing data to the shared preferences for communication with the widget
  *

@@ -1,7 +1,6 @@
 package com.dcentralized.studywallet.models;
 
 import java.io.Serializable;
-import java.util.*;
 
 /**
  * This class represents a company in the application

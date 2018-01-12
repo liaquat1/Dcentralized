@@ -3,7 +3,9 @@ package com.dcentralized.studywallet.models;
 import com.dcentralized.studywallet.repositories.UserRepository;
 import com.google.firebase.firestore.Exclude;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * This class represents a user in the application

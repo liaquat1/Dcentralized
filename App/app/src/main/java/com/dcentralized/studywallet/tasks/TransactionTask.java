@@ -1,7 +1,6 @@
 package com.dcentralized.studywallet.tasks;
 
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.dcentralized.studywallet.models.Transaction;

@@ -3,12 +3,9 @@ package com.dcentralized.studywallet.models;
 import android.content.Context;
 
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
-import com.dcentralized.studywallet.services.FirebaseAuthService;
 import com.dcentralized.studywallet.services.StorageService;
 import com.dcentralized.studywallet.tasks.ProjectTask;
-import com.dcentralized.studywallet.tasks.UserTask;
 
-import java.util.List;
 import java.util.Observer;
 
 /**

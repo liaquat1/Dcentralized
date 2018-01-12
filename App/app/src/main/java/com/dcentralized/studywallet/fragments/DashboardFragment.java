@@ -1,11 +1,9 @@
 package com.dcentralized.studywallet.fragments;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.os.Handler;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,16 +13,11 @@ import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.activities.MainActivity;
-import com.dcentralized.studywallet.adapters.ProjectsListAdapter;
 import com.dcentralized.studywallet.adapters.TransactionListAdapter;
 import com.dcentralized.studywallet.models.StudyWallet;
-import com.dcentralized.studywallet.models.Transaction;
 import com.dcentralized.studywallet.tasks.TransactionTask;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Home fragment for the application

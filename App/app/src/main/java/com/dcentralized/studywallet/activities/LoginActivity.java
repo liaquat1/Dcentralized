@@ -3,20 +3,10 @@ package com.dcentralized.studywallet.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.dcentralized.studywallet.R;
-import com.dcentralized.studywallet.services.FirebaseAuthService;
 import com.dcentralized.studywallet.services.FontysAuthService;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * This is the start activity of the application, it handles the FHICT Login

@@ -2,8 +2,6 @@ package com.dcentralized.studywallet.utilities;
 
 import android.util.Log;
 
-import com.dcentralized.studywallet.activities.LoginActivity;
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;

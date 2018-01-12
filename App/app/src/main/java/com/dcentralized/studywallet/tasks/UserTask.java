@@ -3,11 +3,8 @@ package com.dcentralized.studywallet.tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.dcentralized.studywallet.models.Company;
-import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.User;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;

@@ -1,30 +1,18 @@
 package com.dcentralized.studywallet.contexts;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.dcentralized.studywallet.contexts.interfaces.IUserContext;
 import com.dcentralized.studywallet.models.Company;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.Transaction;
-import com.dcentralized.studywallet.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
 /**

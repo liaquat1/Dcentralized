@@ -3,15 +3,11 @@ package com.dcentralized.studywallet.tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.dcentralized.studywallet.models.User;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

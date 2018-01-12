@@ -3,7 +3,6 @@ package com.dcentralized.studywallet.contexts.interfaces;
 import com.dcentralized.studywallet.models.Company;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.Transaction;
-import com.dcentralized.studywallet.models.User;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.util.List;
