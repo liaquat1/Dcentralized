@@ -21,7 +21,6 @@ import com.dcentralized.studywallet.fragments.AllProjectsFragment;
 import com.dcentralized.studywallet.fragments.DashboardFragment;
 import com.dcentralized.studywallet.fragments.ProjectsFragment;
 import com.dcentralized.studywallet.fragments.RankingFragment;
-import com.dcentralized.studywallet.fragments.SettingsFragment;
 import com.dcentralized.studywallet.fragments.TransferFragment;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.models.User;
@@ -128,9 +127,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_account:
                 fragment = new AccountFragment();
-                break;
-            case R.id.nav_settings:
-                fragment = new SettingsFragment();
                 break;
             default:
                 fragment = new DashboardFragment();

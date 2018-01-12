@@ -1,5 +1,6 @@
 package com.dcentralized.studywallet.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.StudyWallet;
+import com.dcentralized.studywallet.tasks.UserTask;
 
 import java.text.SimpleDateFormat;
 
@@ -34,7 +37,12 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void onButtonApplyClick(View view) {
-
+        if(StudyWallet.getInstance(this).getCurrentUser().addProject(project.getId())){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Failed adding project!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

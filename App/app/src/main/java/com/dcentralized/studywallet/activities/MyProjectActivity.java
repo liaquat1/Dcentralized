@@ -11,18 +11,26 @@ import com.dcentralized.studywallet.R;
  * Created by Liwei on 1/12/2018.
  */
 
-public class MyProjectActivity extends AppCompatActivity {
+public class MyProjectActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
         ((Button)findViewById(R.id.btnApply)).setText("Complete");
-        (findViewById(R.id.btnApply)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        (findViewById(R.id.btnApply)).setOnClickListener(this);
+    }
 
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnApply:
+                onBtnFinishedClick(v);
+                break;
+        }
+    }
+
+    public void onBtnFinishedClick(View view){
+
     }
 }
