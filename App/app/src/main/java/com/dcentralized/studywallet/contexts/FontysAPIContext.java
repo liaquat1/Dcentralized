@@ -13,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 /**
  * This class handles communication with the Fontys API
@@ -33,7 +32,6 @@ public class FontysAPIContext implements IFontysContext {
     public FontysAPIContext(Context context) {
         client = new SyncHttpClient();
         client.addHeader("Authorization", FontysAuthService.getInstance(context).getToken());
-        //client.setSSLSocketFactory(SSLSocketFactory.getSocketFactory());
     }
 
     /**
