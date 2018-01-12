@@ -15,14 +15,14 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutionException;
 
-public class TransactionTask implements Runnable {
-    private static final String TAG = TransactionTask.class.getSimpleName();
+public class TransactionsTask implements Runnable {
+    private static final String TAG = TransactionsTask.class.getSimpleName();
     private FirebaseFirestore database;
     private List<Transaction> result;
     private CyclicBarrier barrier;
     private String id;
 
-    public TransactionTask(String id, CyclicBarrier barrier) {
+    public TransactionsTask(String id, CyclicBarrier barrier) {
         this.id = id;
         this.barrier = barrier;
         this.result = new ArrayList<>();

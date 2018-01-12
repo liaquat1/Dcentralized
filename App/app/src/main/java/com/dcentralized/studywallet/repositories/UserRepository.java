@@ -7,8 +7,8 @@ import com.dcentralized.studywallet.contexts.interfaces.IUserContext;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.Transaction;
 import com.dcentralized.studywallet.models.User;
-import com.dcentralized.studywallet.tasks.ProjectUpdateTask;
-import com.dcentralized.studywallet.tasks.UserTask;
+import com.dcentralized.studywallet.tasks.ProjectAddTask;
+import com.dcentralized.studywallet.tasks.UsersTask;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -58,7 +58,7 @@ public class UserRepository {
      */
     public int getRank(String id) {
         try {
-            UserTask task = new UserTask();
+            UsersTask task = new UsersTask();
             List<User> users = task.execute().get();
             User user = null;
 
@@ -81,7 +81,7 @@ public class UserRepository {
 
     public boolean addProject(String userId, String projectId){
         try {
-            ProjectUpdateTask task = new ProjectUpdateTask(userId, projectId);
+            ProjectAddTask task = new ProjectAddTask(userId, projectId);
             return task.execute().get();
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);

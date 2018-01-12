@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.tasks.ProjectFinishTask;
+import com.dcentralized.studywallet.tasks.TransactionAddTask;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
@@ -77,6 +79,11 @@ public class Project implements Serializable{
 			default:
 				return new ColorDrawable(Color.TRANSPARENT);
 		}
+	}
+
+	public void finishProject() {
+		ProjectFinishTask projectTask = new ProjectFinishTask(id);
+		
 	}
 
 	public String getId() {

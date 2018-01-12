@@ -101,7 +101,10 @@ public class UserDatabaseContext implements IUserContext {
                 Project project = document.toObject(Project.class);
                 project.setId(document.getId());
                 project.setOwner(getOwner((DocumentReference)document.get("owner")));
-                result.add(project);
+
+                if (!project.getFinished()) {
+                    result.add(project);
+                }
             }
 
             return result;

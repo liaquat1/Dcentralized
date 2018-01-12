@@ -19,11 +19,11 @@ import java.util.concurrent.ExecutionException;
  *
  * @author Tom de Wildt
  */
-public class ProjectTask extends Observable implements Runnable {
-    private static final String TAG = ProjectTask.class.getSimpleName();
+public class ProjectsTask extends Observable implements Runnable {
+    private static final String TAG = ProjectsTask.class.getSimpleName();
     private FirebaseFirestore database;
 
-    public ProjectTask(Observer observer) {
+    public ProjectsTask(Observer observer) {
         database = FirebaseFirestore.getInstance();
         addObserver(observer);
     }

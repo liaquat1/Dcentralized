@@ -19,11 +19,11 @@ import java.util.concurrent.ExecutionException;
  *
  * @author Tom de Wildt
  */
-public class UserTask extends AsyncTask<Void, Void, List<User>> {
-    private static final String TAG = UserTask.class.getSimpleName();
+public class UsersTask extends AsyncTask<Void, Void, List<User>> {
+    private static final String TAG = UsersTask.class.getSimpleName();
     private FirebaseFirestore database;
 
-    public UserTask() {
+    public UsersTask() {
         database = FirebaseFirestore.getInstance();
     }
 

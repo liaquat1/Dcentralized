@@ -11,13 +11,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class ProjectUpdateTask extends AsyncTask<Void, Void, Boolean> {
-    private static final String TAG = ProjectUpdateTask.class.getSimpleName();
+public class ProjectAddTask extends AsyncTask<Void, Void, Boolean> {
+    private static final String TAG = ProjectAddTask.class.getSimpleName();
     private String userId;
     private String projectId;
     private FirebaseFirestore database;
 
-    public ProjectUpdateTask(String userId, String projectId){
+    public ProjectAddTask(String userId, String projectId){
         this.userId = userId;
         this.projectId = projectId;
         database = FirebaseFirestore.getInstance();

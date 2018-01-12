@@ -15,7 +15,7 @@ import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.adapters.TransactionListAdapter;
 import com.dcentralized.studywallet.models.StudyWallet;
-import com.dcentralized.studywallet.tasks.TransactionTask;
+import com.dcentralized.studywallet.tasks.TransactionsTask;
 
 import java.util.concurrent.CyclicBarrier;
 
@@ -32,7 +32,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
     private SwipeRefreshLayout refreshTransactions;
     private ListView listTransactions;
     private TransactionListAdapter adapter;
-    private TransactionTask task;
+    private TransactionsTask task;
 
     /**
      * Empty constructor for creating intents
@@ -86,7 +86,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
                         });
                     }
                 });
-                task = new TransactionTask(StudyWallet.getInstance(getActivity()).getCurrentUser().getId(), barrier);
+                task = new TransactionsTask(StudyWallet.getInstance(getActivity()).getCurrentUser().getId(), barrier);
                 new Thread(task).start();
             }
         });

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.StorageService;
-import com.dcentralized.studywallet.tasks.ProjectTask;
+import com.dcentralized.studywallet.tasks.ProjectsTask;
 
 import java.util.Observer;
 
@@ -67,7 +67,7 @@ public class StudyWallet {
      * @return list of projects
      */
     public void getAllProjects(Observer observer) {
-        new Thread(new ProjectTask(observer)).start();
+        new Thread(new ProjectsTask(observer)).start();
     }
 
     /**
