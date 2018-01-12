@@ -33,7 +33,7 @@ public class FontysAPIContext implements IFontysContext {
     public FontysAPIContext(Context context) {
         client = new SyncHttpClient();
         client.addHeader("Authorization", FontysAuthService.getInstance(context).getToken());
-        client.setSSLSocketFactory(SSLSocketFactory.getSocketFactory());
+        //client.setSSLSocketFactory(SSLSocketFactory.getSocketFactory());
     }
 
     /**

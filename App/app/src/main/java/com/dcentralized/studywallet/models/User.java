@@ -97,6 +97,11 @@ public class User {
 		}
 	}
 
+	@Exclude
+	public boolean addProject(String projectId){
+		return repository.addProject(this.id, projectId);
+	}
+
     @Exclude
 	public String getId() {
 		return this.id;

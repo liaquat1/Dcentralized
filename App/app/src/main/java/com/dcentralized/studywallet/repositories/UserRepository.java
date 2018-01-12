@@ -7,6 +7,7 @@ import com.dcentralized.studywallet.contexts.interfaces.IUserContext;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.Transaction;
 import com.dcentralized.studywallet.models.User;
+import com.dcentralized.studywallet.tasks.ProjectUpdateTask;
 import com.dcentralized.studywallet.tasks.UserTask;
 
 import java.util.List;
@@ -76,5 +77,17 @@ public class UserRepository {
             Log.e(TAG, "InterruptException occurred", e);
             return 0;
         }
+    }
+
+    public boolean addProject(String userId, String projectId){
+        try {
+            ProjectUpdateTask task = new ProjectUpdateTask(userId, projectId);
+            return task.execute().get();
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+        }
+        return false;
     }
 }
