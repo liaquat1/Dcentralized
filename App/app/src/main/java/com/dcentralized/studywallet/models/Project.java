@@ -24,6 +24,7 @@ public class Project implements Serializable{
 	private Company owner;
 	private int reward;
 	private Date time;
+	private double difficulty;
 	private boolean finished;
 	private boolean taken;
 
@@ -105,6 +106,9 @@ public class Project implements Serializable{
 	}
 	public Date getTime() {
 		return this.time;
+	}
+	public double getDifficulty() {
+		return this.difficulty;
 	}
 	public boolean getFinished() {
 		return this.finished;
