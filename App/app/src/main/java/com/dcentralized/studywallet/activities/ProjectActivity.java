@@ -13,7 +13,7 @@ import com.dcentralized.studywallet.models.Project;
 
 import java.text.SimpleDateFormat;
 
-public class ProjectActivity extends AppCompatActivity {
+public class ProjectActivity extends AppCompatActivity implements View.OnClickListener {
     private Project project;
 
     @Override
@@ -28,6 +28,7 @@ public class ProjectActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.tvProjectDescription)).setText(project.getDescription());
         ((TextView)findViewById(R.id.tvProjectDifficulty)).setText(String.valueOf(project.getDifficulty()));
         ((ImageView) findViewById(R.id.ivLogo)).setImageDrawable(project.getLogo(this));
+        (findViewById(R.id.btnApply)).setOnClickListener(this);
         getSupportActionBar().setTitle(project.getName());
         findViewById(R.id.btnApply).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +36,18 @@ public class ProjectActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void onButtonApplyClick(View view) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnApply:
+                onButtonApplyClick(view);
+                break;
+        }
     }
 }
