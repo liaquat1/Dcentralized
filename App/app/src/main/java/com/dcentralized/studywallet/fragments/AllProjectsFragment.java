@@ -35,6 +35,13 @@ public class AllProjectsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        projectList = StudyWallet.getInstance(getActivity()).getAllProjects();
+        listProjects.setAdapter(new ProjectsListAdapter(getActivity(), R.id.listProjects, projectList));
+    }
+
     /**
      * Sets the view for the fragment
      *
@@ -49,8 +56,6 @@ public class AllProjectsFragment extends Fragment {
         // Inflate the layout for this fragment
         layout = inflater.inflate(R.layout.fragment_all_projects, container, false);
         listProjects = layout.findViewById(R.id.listAllProjects);
-        projectList = StudyWallet.getInstance(getActivity()).getAllProjects();
-        listProjects.setAdapter(new ProjectsListAdapter(getActivity(), R.id.listProjects, projectList));
 
         listProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
