@@ -39,7 +39,7 @@ public class ProjectUpdateTask extends AsyncTask<Void, Void, Boolean> {
             references.add(projectReference);
 
             // Update user
-            Tasks.await(userReference.update("projects", references));
+            userReference.update("projects", references);
 
             return true;
         } catch (ExecutionException e) {
