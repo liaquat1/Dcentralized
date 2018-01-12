@@ -15,10 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by Liwei on 1/12/2018.
- */
-
 public class ProjectUpdateTask extends AsyncTask<Void, Void, Boolean> {
     private static final String TAG = ProjectUpdateTask.class.getSimpleName();
     private String userId;
@@ -31,20 +27,27 @@ public class ProjectUpdateTask extends AsyncTask<Void, Void, Boolean> {
         database = FirebaseFirestore.getInstance();
     }
 
-
     @Override
     protected Boolean doInBackground(Void... voids) {
         try {
-            DocumentReference reference = database.collection("users").document(userId);
-            DocumentSnapshot snapshot = Tasks.await(reference.get());
-            DocumentReference projectRef = database.collection("projects").document(projectId);
-            List<DocumentReference> referenceList = (ArrayList)snapshot.get("projects");
-            referenceList.add(projectRef);
-            Tasks.await(database.collection("users").document(userId).update("projects", referenceList));
+            DocumentReference userReference = database.collection("users").document(userId);
+            DocumentReference projectReference = database.collection("projects").document(projectId);
+            DocumentSnapshot userDocument = Tasks.await(userReference.get());
+
+            // Add project
+            List<DocumentReference> references = (List)userDocument.get("projects");
+            references.add(projectReference);
+
+            // Update user
+            Tasks.await(userReference.update("projects", references));
+
             return true;
-        } catch (ExecutionException | InterruptedException e) {
-            Log.d(TAG,  e.getMessage());
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return false;
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+            return false;
         }
-        return false;
     }
 }
