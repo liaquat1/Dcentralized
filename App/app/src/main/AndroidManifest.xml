@@ -44,7 +44,11 @@
         <activity
             android:name=".activities.ProjectActivity"
             android:label="@string/title_activity_project"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.MyProjectActivity"
+            android:label="@string/title_activity_project"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

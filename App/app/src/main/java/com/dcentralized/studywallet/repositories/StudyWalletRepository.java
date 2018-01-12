@@ -11,6 +11,8 @@ import com.dcentralized.studywallet.utilities.ConverterUtility;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
 /**
  * Handles communication with the fontys context and database context
  *
@@ -85,5 +87,9 @@ public class StudyWalletRepository {
         user.getTransactionsFromDatabase();
         user.getProjectsFromDatabase();
         return user;
+    }
+
+    public List<User> getAllUsersFromDatabase(){
+        return databaseContext.getAllUsersFromDatabase();
     }
 }

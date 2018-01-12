@@ -5,13 +5,17 @@ import android.util.Log;
 import com.dcentralized.studywallet.contexts.interfaces.IStudyWalletContext;
 import com.dcentralized.studywallet.models.User;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -110,5 +114,26 @@ public class StudyWalletDatabaseContext implements IStudyWalletContext {
             Log.e(TAG, "InterruptException occurred", e);
             return null;
         }
+    }
+
+    @Override
+    public List<User> getAllUsersFromDatabase() {
+        try {
+            QuerySnapshot snapshot = Tasks.await(database.collection("users").orderBy("totalCoins", Query.Direction.DESCENDING).get());
+            List<User> users = new ArrayList<>();
+
+            for (DocumentSnapshot document : snapshot.getDocuments()) {
+                User user = document.toObject(User.class);
+                user.setId(document.getId());
+                users.add(user);
+            }
+
+            return users;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+        }
+        return null;
     }
 }

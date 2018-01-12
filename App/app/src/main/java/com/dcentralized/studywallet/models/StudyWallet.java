@@ -2,10 +2,12 @@ package com.dcentralized.studywallet.models;
 
 import android.content.Context;
 
+import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.StorageService;
 import com.dcentralized.studywallet.tasks.ProjectsTask;
 
+import java.util.List;
 import java.util.Observer;
 
 /**
@@ -58,6 +60,10 @@ public class StudyWallet {
             }
         }
         return false;
+    }
+
+    public List<User> getAllUsers(){
+        return repository.getAllUsersFromDatabase();
     }
 
     /**

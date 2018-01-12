@@ -2,6 +2,8 @@ package com.dcentralized.studywallet.contexts.interfaces;
 
 import com.dcentralized.studywallet.models.User;
 
+import java.util.List;
+
 /**
  * This class handles communication with the database
  *
@@ -34,4 +36,6 @@ public interface IStudyWalletContext {
      * @author Tom de Wildt
      */
     User getUserFromDatabase(String id);
+
+    List<User> getAllUsersFromDatabase();
 }
