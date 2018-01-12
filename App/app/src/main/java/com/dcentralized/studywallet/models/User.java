@@ -68,6 +68,17 @@ public class User {
     }
 
     /**
+     * Sets the new transactions
+     *
+     * @param transactions to set
+     * @author Tom de Wildt
+     */
+    public void setTransactions(List<Transaction> transactions) {
+	    this.transactions.clear();
+	    this.transactions.addAll(transactions);
+    }
+
+    /**
      * Gets the user's projects from the database
      *
      * @author Tom de Wildt

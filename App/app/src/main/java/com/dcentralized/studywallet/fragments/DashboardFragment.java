@@ -3,6 +3,9 @@ package com.dcentralized.studywallet.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,8 +15,16 @@ import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.activities.MainActivity;
+import com.dcentralized.studywallet.adapters.ProjectsListAdapter;
 import com.dcentralized.studywallet.adapters.TransactionListAdapter;
 import com.dcentralized.studywallet.models.StudyWallet;
+import com.dcentralized.studywallet.models.Transaction;
+import com.dcentralized.studywallet.tasks.TransactionTask;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Home fragment for the application
@@ -21,10 +32,14 @@ import com.dcentralized.studywallet.models.StudyWallet;
  * @author Tom de Wildt
  */
 public class DashboardFragment extends Fragment implements OnClickListener {
+    private static final String TAG = DashboardFragment.class.getSimpleName();
     private View layout;
     private TextView textCoins;
     private TextView textRank;
+    private SwipeRefreshLayout refreshTransactions;
     private ListView listTransactions;
+    private TransactionListAdapter adapter;
+    private TransactionTask task;
 
     /**
      * Empty constructor for creating intents
@@ -50,14 +65,38 @@ public class DashboardFragment extends Fragment implements OnClickListener {
         layout = inflater.inflate(R.layout.fragment_dashboard, container, false);
         textCoins = layout.findViewById(R.id.textCoins);
         textRank = layout.findViewById(R.id.textRank);
+        refreshTransactions = layout.findViewById(R.id.refreshTransactions);
         listTransactions = layout.findViewById(R.id.listTransactions);
-        layout.findViewById(R.id.buttonAddProject).setOnClickListener(this);
 
         // Setup UI
         Activity activity = getActivity();
         textCoins.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getBalance()));
         textRank.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getRank()));
-        listTransactions.setAdapter(new TransactionListAdapter(activity, R.layout.transaction_list_item, StudyWallet.getInstance(activity).getCurrentUser().getTransactions()));
+        adapter = new TransactionListAdapter(activity, R.layout.transaction_list_item, StudyWallet.getInstance(activity).getCurrentUser().getTransactions());
+        listTransactions.setAdapter(adapter);
+        layout.findViewById(R.id.buttonAddProject).setOnClickListener(this);
+
+        refreshTransactions.setColorSchemeResources(R.color.colorPrimary);
+        refreshTransactions.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                CyclicBarrier barrier = new CyclicBarrier(1, new Runnable() {
+                    @Override
+                    public void run() {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                StudyWallet.getInstance(getActivity()).getCurrentUser().setTransactions(task.getResult());
+                                adapter.notifyDataSetChanged();
+                                refreshTransactions.setRefreshing(false);
+                            }
+                        });
+                    }
+                });
+                task = new TransactionTask(StudyWallet.getInstance(getActivity()).getCurrentUser().getId(), barrier);
+                new Thread(task).start();
+            }
+        });
 
         return layout;
     }
