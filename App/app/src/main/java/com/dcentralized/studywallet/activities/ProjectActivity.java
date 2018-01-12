@@ -37,7 +37,7 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void onButtonApplyClick(View view) {
-        if(StudyWallet.getInstance(this).getCurrentUser().addProject(project.getId())){
+        if(StudyWallet.getInstance(this).getCurrentUser().addProject(project)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {

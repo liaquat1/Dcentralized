@@ -71,7 +71,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
         // Setup UI
         Activity activity = getActivity();
         textCoins.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getBalance()));
-        textRank.setText(String.valueOf(StudyWallet.getInstance(activity).getCurrentUser().getRank()));
+        textRank.setText(String.format("#%s", StudyWallet.getInstance(activity).getCurrentUser().getRank()));
         adapter = new TransactionListAdapter(activity, R.layout.transaction_list_item, StudyWallet.getInstance(activity).getCurrentUser().getTransactions());
         listTransactions.setAdapter(adapter);
         layout.findViewById(R.id.buttonAddProject).setOnClickListener(this);

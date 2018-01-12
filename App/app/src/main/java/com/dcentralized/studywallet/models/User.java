@@ -108,9 +108,12 @@ public class User {
 		}
 	}
 
-	@Exclude
-	public boolean addProject(String projectId){
-		return repository.addProject(this.id, projectId);
+	public boolean addProject(Project project){
+		if (repository.addProject(this.id, project.getId())) {
+		    projects.add(project);
+		    return true;
+        }
+        return false;
 	}
 
     @Exclude
