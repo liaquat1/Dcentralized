@@ -7,7 +7,7 @@
     android:background="@color/colorAccent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.dcentralized.studywallet.activities.ProjectActivity"
-    tools:showIn="@layout/activity_project2">
+    tools:showIn="@layout/activity_project">
 
     <LinearLayout
         android:layout_width="match_parent"
