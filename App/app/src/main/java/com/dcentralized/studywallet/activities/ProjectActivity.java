@@ -3,6 +3,8 @@ package com.dcentralized.studywallet.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,7 +13,7 @@ import com.dcentralized.studywallet.models.Project;
 
 import java.text.SimpleDateFormat;
 
-public class ProjectActivity extends AppCompatActivity {
+public class ProjectActivity extends AppCompatActivity implements View.OnClickListener {
     private Project project;
 
     @Override
@@ -27,6 +29,20 @@ public class ProjectActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.tvProjectDescription)).setText(project.getDescription());
         ((TextView)findViewById(R.id.tvProjectDifficulty)).setText(String.valueOf(project.getDifficulty()));
         ((ImageView) findViewById(R.id.ivLogo)).setImageDrawable(project.getLogo(this));
+        (findViewById(R.id.btnApply)).setOnClickListener(this);
         getSupportActionBar().setTitle(project.getName());
+    }
+
+    private void onButtonApplyClick(View view) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnApply:
+                onButtonApplyClick(view);
+                break;
+        }
     }
 }
