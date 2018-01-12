@@ -72,7 +72,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonAddProject:
-                ((MainActivity)getActivity()).changeFragment(R.id.nav_projects);
+                ((MainActivity)getActivity()).changeFragment(R.id.nav_all_projects);
                 break;
         }
     }
