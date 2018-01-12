@@ -5,8 +5,11 @@ import android.content.Context;
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
 import com.dcentralized.studywallet.services.StorageService;
+import com.dcentralized.studywallet.tasks.ProjectTask;
+import com.dcentralized.studywallet.tasks.UserTask;
 
 import java.util.List;
+import java.util.Observer;
 
 /**
  * This is the main class for the system
@@ -66,8 +69,8 @@ public class StudyWallet {
      * @author Tom de Wildt
      * @return list of projects
      */
-    public List<Project> getAllProjects() {
-        return repository.getAllProjects();
+    public void getAllProjects(Observer observer) {
+        new Thread(new ProjectTask(observer)).start();
     }
 
     /**

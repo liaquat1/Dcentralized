@@ -92,23 +92,4 @@ public class StudyWalletRepository {
         user.getProjectsFromDatabase();
         return user;
     }
-
-    /**
-     * Gets all projects from the database context
-     *
-     * @return list of projects
-     * @author Tom de Wildt
-     */
-    public List<Project> getAllProjects() {
-        try {
-            ProjectTask task = new ProjectTask();
-            return task.execute().get();
-        } catch (ExecutionException e) {
-            Log.e(TAG, "ExecutionException occurred", e);
-            return null;
-        } catch (InterruptedException e) {
-            Log.e(TAG, "InterruptException occurred", e);
-            return null;
-        }
-    }
 }
