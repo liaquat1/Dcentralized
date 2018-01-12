@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import com.dcentralized.studywallet.R;
 import com.google.firebase.firestore.Exclude;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
  *
  * @author Tom de Wildt
  */
-public class Project {
+public class Project implements Serializable{
 	private String id;
 	private String name;
 	private String description;

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/fragment_project">
+    tools:context="com.dcentralized.studywallet.activities.ProjectActivity"
+    tools:showIn="@layout/activity_project">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,8 +103,8 @@
             <TextView
                 android:id="@+id/tvProjectDescription"
                 style="@style/AppTheme.ProjectTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:text="@string/text_test" />
         </LinearLayout>
@@ -117,7 +118,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="120dp"
             android:background="@drawable/bg_round_corner"
-            android:onClick="onButtonAddProjectClick"
             android:text="Apply"
             android:textColor="@color/colorAccent" />
 

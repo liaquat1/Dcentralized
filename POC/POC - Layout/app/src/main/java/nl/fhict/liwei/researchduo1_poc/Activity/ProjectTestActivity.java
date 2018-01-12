@@ -14,12 +14,13 @@ import nl.fhict.liwei.researchduo1_poc.R;
 
 public class ProjectTestActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_test);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("JavaFX Application");
+        setTitle("Test");
         setSupportActionBar(toolbar);
     }
 
