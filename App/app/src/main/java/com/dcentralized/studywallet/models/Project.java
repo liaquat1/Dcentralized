@@ -24,6 +24,7 @@ public class Project implements Serializable{
 	private Company owner;
 	private int reward;
 	private Date time;
+	private double difficulty;
 	private boolean finished;
 	private boolean taken;
 
@@ -48,7 +49,7 @@ public class Project implements Serializable{
 			case Java:
 				return context.getResources().getDrawable(R.drawable.java_logo);
 			case CS:
-				return context.getResources().getDrawable(R.drawable.chastag_logo);
+				return context.getResources().getDrawable(R.drawable.cs_marcel_logo);
 			case Python:
 				return context.getResources().getDrawable(R.drawable.python_logo);
 			case Javascript:
@@ -105,6 +106,9 @@ public class Project implements Serializable{
 	}
 	public Date getTime() {
 		return this.time;
+	}
+	public double getDifficulty() {
+		return this.difficulty;
 	}
 	public boolean getFinished() {
 		return this.finished;

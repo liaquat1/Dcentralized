@@ -22,6 +22,7 @@
     <!-- Buttons -->
     <string name="button_login">LOGIN</string>
     <string name="button_add_project">+Project</string>
+    <string name="button_apply">Apply</string>
 
     <!-- Text -->
     <string name="text_history">History: </string>
@@ -31,10 +32,7 @@
     <string name="text_balance">Balance: </string>
     <string name="text_total_coins">Total Coins: </string>
     <string name="text_type">Type: </string>
-    <string name="text_test">With this Java project, you will be challenged to create an drawing application from scratch using JavaFX for the GUI.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_project">Project Information</string>
     <string name="action_settings">Settings</string>
 </resources>

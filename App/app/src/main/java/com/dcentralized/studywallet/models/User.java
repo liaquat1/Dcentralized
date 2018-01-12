@@ -87,6 +87,16 @@ public class User {
     	rank = repository.getRank(id);
 	}
 
+	/**
+	 * Transfers money to a student if user is docent
+	 *
+	 */
+	public void transferCoins() {
+		if (type == UserType.Docent){
+			// TODO: transfer money
+		}
+	}
+
     @Exclude
 	public String getId() {
 		return this.id;

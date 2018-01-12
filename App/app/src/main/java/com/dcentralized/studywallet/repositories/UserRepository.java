@@ -7,12 +7,10 @@ import com.dcentralized.studywallet.contexts.interfaces.IUserContext;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.Transaction;
 import com.dcentralized.studywallet.models.User;
-import com.dcentralized.studywallet.models.UserType;
 import com.dcentralized.studywallet.tasks.UserTask;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Predicate;
 
 /**
  * Handles communication with the database context
