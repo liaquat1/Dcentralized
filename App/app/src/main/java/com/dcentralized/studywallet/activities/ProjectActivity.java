@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.models.Project;
+import com.dcentralized.studywallet.models.StudyWallet;
 
 import java.text.SimpleDateFormat;
 
@@ -30,12 +31,6 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         ((ImageView) findViewById(R.id.ivLogo)).setImageDrawable(project.getLogo(this));
         (findViewById(R.id.btnApply)).setOnClickListener(this);
         getSupportActionBar().setTitle(project.getName());
-        findViewById(R.id.btnApply).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private void onButtonApplyClick(View view) {

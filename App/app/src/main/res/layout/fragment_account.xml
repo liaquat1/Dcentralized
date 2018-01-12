@@ -156,7 +156,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/chastag_logo"
+        android:src="@drawable/cs_marcel_logo"
         app:civ_border_color="@color/colorPrimary"
         app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
