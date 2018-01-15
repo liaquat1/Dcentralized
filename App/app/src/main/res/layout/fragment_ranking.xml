@@ -7,6 +7,7 @@
     tools:context="com.dcentralized.studywallet.fragments.RankingFragment">
 
     <ListView
+        android:id="@+id/lvHighscore"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
