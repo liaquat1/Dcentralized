@@ -87,8 +87,8 @@ public class Project implements Serializable{
 	public void finish(String userId) {
 		try {
 			Transaction transaction = null;
-			if (time.after(new Date())) {
-				transaction = new Transaction(name, reward / 2);
+			if (time.before(new Date())) {
+				transaction = new Transaction(name, Double.valueOf((double)reward / 2).intValue());
 			} else {
 				transaction = new Transaction(name, reward);
 			}
