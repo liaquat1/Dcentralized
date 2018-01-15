@@ -24,6 +24,14 @@
         <item name="android:textColorHint">@color/colorPrimary</item>
     </style>
 
+    <style name="AppTheme.StudyCoinTextBold">
+        <item name="android:fontFamily">@font/ibm_plex_sans_italic</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+    </style>
+
     <style name="AppTheme.StudyCoinText_Small">
         <item name="android:fontFamily">@font/ibm_plex_sans_thin_italic</item>
         <item name="android:textSize">15sp</item>

@@ -68,7 +68,7 @@ public class RankListAdapter extends ArrayAdapter<User>{
             viewHolder.tvName.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
             viewHolder.tvCoins.setText(String.valueOf(item.getTotalCoins()));
             viewHolder.tvCoins.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-            viewHolder.tvRank.setText(String.valueOf(item.getRank()));
+            viewHolder.tvRank.setText( "#" + String.valueOf(item.getRank()));
             viewHolder.tvRank.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
         }
 
