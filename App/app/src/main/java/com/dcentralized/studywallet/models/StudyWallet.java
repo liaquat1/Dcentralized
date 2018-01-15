@@ -2,10 +2,9 @@ package com.dcentralized.studywallet.models;
 
 import android.content.Context;
 
-import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.repositories.StudyWalletRepository;
 import com.dcentralized.studywallet.services.StorageService;
-import com.dcentralized.studywallet.tasks.ProjectsTask;
+import com.dcentralized.studywallet.tasks.ProjectsAllTask;
 
 import java.util.List;
 import java.util.Observer;
@@ -73,7 +72,7 @@ public class StudyWallet {
      * @return list of projects
      */
     public void getAllProjects(Observer observer) {
-        new Thread(new ProjectsTask(observer)).start();
+        new Thread(new ProjectsAllTask(observer)).start();
     }
 
     /**

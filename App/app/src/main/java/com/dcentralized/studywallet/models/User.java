@@ -80,14 +80,25 @@ public class User {
 	    this.transactions.addAll(transactions);
     }
 
-    /**
-     * Gets the user's projects from the database
+	/**
+	 * Gets the user's projects from the database
      *
      * @author Tom de Wildt
      */
     public void getProjectsFromDatabase() {
 	    projects = repository.getProjects(id);
     }
+
+	/**
+	 * Sets the new projects
+	 *
+	 * @param projects to set
+	 * @author Tom de Wildt
+	 */
+	public void setProjects(List<Project> projects) {
+		this.projects.clear();
+		this.projects.addAll(projects);
+	}
 
 	/**
 	 * Gets the user's rank from database
