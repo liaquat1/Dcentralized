@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.tasks.ProjectFinishTask;
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 /**
  * This class represents a project in the application
@@ -19,6 +21,7 @@ import java.util.Date;
  * @author Tom de Wildt
  */
 public class Project implements Serializable{
+	private static final String TAG = Project.class.getSimpleName();
 	private String id;
 	private String name;
 	private String description;
@@ -81,9 +84,26 @@ public class Project implements Serializable{
 		}
 	}
 
-	public void finishProject() {
-		ProjectFinishTask projectTask = new ProjectFinishTask(id);
-		
+	public void finish(String userId) {
+		try {
+			Transaction transaction = null;
+			if (time.after(new Date())) {
+				transaction = new Transaction(name, reward / 2);
+			} else {
+				transaction = new Transaction(name, reward);
+			}
+
+			ProjectFinishTask projectTask = new ProjectFinishTask(id);
+			TransactionAddTask transactionTask = new TransactionAddTask(transaction, userId);
+
+			if (projectTask.execute().get() && transactionTask.execute().get()) {
+				finished = true;
+			}
+		} catch (ExecutionException e) {
+			Log.e(TAG, "ExecutionException occurred", e);
+		} catch (InterruptedException e) {
+			Log.e(TAG, "InterruptException occurred", e);
+		}
 	}
 
 	public String getId() {

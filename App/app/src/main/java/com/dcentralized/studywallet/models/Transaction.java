@@ -1,5 +1,7 @@
 package com.dcentralized.studywallet.models;
 
+import com.google.firebase.firestore.Exclude;
+
 /**
  * This class represents a transaction in the application
  *
@@ -19,6 +21,12 @@ public class Transaction {
 		// Empty
 	}
 
+	public Transaction(String name, int amount) {
+		this.name = name;
+		this.amount = amount;
+	}
+
+	@Exclude
 	public String getId() {
 		return this.id;
 	}

@@ -32,20 +32,21 @@ public class TransactionAddTask extends AsyncTask<Void, Void, Boolean> {
             DocumentSnapshot userDocument = Tasks.await(userReference.get());
 
             // Add transaction
-            DocumentReference transactionReference = Tasks.await(database.collection("transactions").add(transaction));
+            DocumentReference transactionReference = database.collection("transactions").add(transaction).getResult();
 
             // Add transaction to user
             List<DocumentReference> references = (List)userDocument.get("transactions");
             references.add(transactionReference);
+            userReference.update("transactions", references);
 
             // Update user balance
-            int balance = (int)userDocument.get("balance");
-            userReference.update("balance", balance + transaction.getAmount());
+            Long balance = (Long)userDocument.get("balance");
+            userReference.update("balance", balance.intValue() + transaction.getAmount());
 
             // Update total coins if amount > 0
             if (transaction.getAmount() > 0) {
-                int total = (int)userDocument.get("totalCoins");
-                userReference.update("totalCoins", total + transaction.getAmount());
+                Long total = (Long)userDocument.get("totalCoins");
+                userReference.update("totalCoins", total.intValue() + transaction.getAmount());
             }
 
             return true;
