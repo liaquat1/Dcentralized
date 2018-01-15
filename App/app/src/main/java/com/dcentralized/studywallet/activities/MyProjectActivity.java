@@ -11,13 +11,10 @@ import android.widget.TextView;
 
 import com.dcentralized.studywallet.R;
 import com.dcentralized.studywallet.models.Project;
+import com.dcentralized.studywallet.models.StudyWallet;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-/**
- * Created by Liwei on 1/12/2018.
- */
 
 public class MyProjectActivity extends AppCompatActivity implements View.OnClickListener {
     private Project project;
@@ -50,12 +47,8 @@ public class MyProjectActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnApply:
-                onBtnFinishedClick(v);
+                project.finish(StudyWallet.getInstance(this).getCurrentUser().getId());
                 break;
         }
-    }
-
-    public void onBtnFinishedClick(View view){
-        //TODO
     }
 }
