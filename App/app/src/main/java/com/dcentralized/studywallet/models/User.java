@@ -113,12 +113,16 @@ public class User {
 
 	/**
 	 * Transfers money to a student if user is docent
-	 *
+	 * @param studentNr Number of student
+	 * @param amountOfCoins Amount of coins
+	 * @author Davey van den Bogaard
 	 */
-	public void transferCoins() {
+	public boolean transferCoins(String studentNr, int amountOfCoins) {
 		if (type == UserType.Docent){
-			// TODO: transfer money
+
+			return true;//repository.transferCoins(studentNr,amountOfCoins);
 		}
+		return false;
 	}
 
 	public boolean addProject(Project project){

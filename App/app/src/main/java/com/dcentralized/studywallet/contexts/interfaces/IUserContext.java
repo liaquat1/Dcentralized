@@ -49,4 +49,6 @@ public interface IUserContext {
      * @author Tom de Wildt
      */
     Company getOwner(DocumentReference reference);
+
+    
 }
