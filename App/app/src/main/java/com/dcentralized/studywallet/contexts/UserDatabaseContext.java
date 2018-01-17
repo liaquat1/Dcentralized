@@ -148,4 +148,17 @@ public class UserDatabaseContext implements IUserContext {
             return null;
         }
     }
+
+    @Override
+    public void transferCoins(String id, int amountOfCoins) {
+        try {
+            DocumentReference reference = database.collection("users").document(id);
+            DocumentSnapshot snapshot = Tasks.await(reference.get());
+            Integer coins = (Integer)snapshot.get("totalCoins");
+            Tasks.await(database.collection("users").document(id).update("totalCoins", coins + amountOfCoins));
+//            database.collection("users").document(id).update("totalCoins", amountOfCoins);
+        } catch (Exception e) {
+            Log.e(TAG, "InterruptException occurred", e);
+        }
+    }
 }

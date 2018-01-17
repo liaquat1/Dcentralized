@@ -50,4 +50,11 @@ public interface IUserContext {
      * @author Tom de Wildt
      */
     Company getOwner(DocumentReference reference);
+
+    /**
+     * Transfers coins to Student
+     *
+     *
+     */
+    void transferCoins(String studentNr, int amountOfCoins);
 }
