@@ -44,10 +44,14 @@
         <activity
             android:name=".activities.ProjectActivity"
             android:label="@string/title_activity_project"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.MyProjectActivity"
             android:label="@string/title_activity_project"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.TutorialActivity"
+            android:label="@string/tutorial"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

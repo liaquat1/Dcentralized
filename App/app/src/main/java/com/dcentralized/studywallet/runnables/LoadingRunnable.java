@@ -2,11 +2,15 @@ package com.dcentralized.studywallet.runnables;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.activities.SplashActivity;
+import com.dcentralized.studywallet.activities.TutorialActivity;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.services.FirebaseAuthService;
+import com.dcentralized.studywallet.services.StorageService;
 
 /**
  * Authenticates with the database and set the current user
@@ -34,10 +38,21 @@ public class LoadingRunnable implements Runnable {
     @Override
     public void run() {
         if (FirebaseAuthService.getInstance(context).login() && StudyWallet.getInstance(context).setCurrentUser()) {
-            Intent i = new Intent(context, MainActivity.class);
+            Intent i;
+            //String firstStart = StorageService.getInstance(context).loadValue("firstStart");
+            String firstStart = "";
+            if(firstStart == null || firstStart.isEmpty()){
+                i = new Intent(context, TutorialActivity.class);
+                StorageService.getInstance(context).storeValue("firstStart", "Not the first start");
+            } else {
+                i = new Intent(context, MainActivity.class);
+                StorageService.getInstance(context).storeValue("firstStart", "Not the first start");
+            }
             context.startActivity(i);
         } else {
             ((SplashActivity)context).updateUI();
         }
     }
+
+
 }
