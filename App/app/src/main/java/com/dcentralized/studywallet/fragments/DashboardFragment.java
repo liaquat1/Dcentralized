@@ -80,6 +80,7 @@ public class DashboardFragment extends Fragment implements OnClickListener {
                             @Override
                             public void run() {
                                 StudyWallet.getInstance(getActivity()).getCurrentUser().setTransactions(task.getResult());
+                                // TODO: get balance
                                 adapter.notifyDataSetChanged();
                                 refreshTransactions.setRefreshing(false);
                             }

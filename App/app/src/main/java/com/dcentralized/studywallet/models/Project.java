@@ -84,7 +84,7 @@ public class Project implements Serializable{
 		}
 	}
 
-	public void finish(String userId) {
+	public boolean finish(String userId, Context context) {
 		try {
 			Transaction transaction = null;
 			if (time.before(new Date())) {
@@ -96,13 +96,22 @@ public class Project implements Serializable{
 			ProjectFinishTask projectTask = new ProjectFinishTask(id);
 			TransactionAddTask transactionTask = new TransactionAddTask(transaction, userId);
 
-			if (projectTask.execute().get() && transactionTask.execute().get()) {
+			boolean projectTaskResult = projectTask.execute().get();
+			Transaction transactionTaskResult = transactionTask.execute().get();
+
+			if (projectTaskResult && transactionTaskResult != null) {
 				finished = true;
+				StudyWallet.getInstance(context).getCurrentUser().updateBalance(transaction.getAmount());
+				StudyWallet.getInstance(context).getCurrentUser().addTransaction(transactionTaskResult);
+				return true;
 			}
+			return false;
 		} catch (ExecutionException e) {
 			Log.e(TAG, "ExecutionException occurred", e);
+			return false;
 		} catch (InterruptedException e) {
 			Log.e(TAG, "InterruptException occurred", e);
+			return false;
 		}
 	}
 

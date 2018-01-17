@@ -13,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class TransactionAddTask extends AsyncTask<Void, Void, Boolean> {
+public class TransactionAddTask extends AsyncTask<Void, Void, Transaction> {
     private static final String TAG = TransactionAddTask.class.getSimpleName();
     private FirebaseFirestore database;
     private Transaction transaction;
@@ -26,36 +26,42 @@ public class TransactionAddTask extends AsyncTask<Void, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Void... voids) {
+    protected Transaction doInBackground(Void... voids) {
         try {
             DocumentReference userReference = database.collection("users").document(userId);
             DocumentSnapshot userDocument = Tasks.await(userReference.get());
+            Log.d(TAG, "User document retrieved");
 
             // Add transaction
-            DocumentReference transactionReference = database.collection("transactions").add(transaction).getResult();
+            DocumentReference transactionReference = Tasks.await(database.collection("transactions").add(transaction));
+            Log.d(TAG, "Transaction reference retrieved");
 
             // Add transaction to user
             List<DocumentReference> references = (List)userDocument.get("transactions");
             references.add(transactionReference);
             userReference.update("transactions", references);
+            Log.d(TAG, "Transaction added");
 
             // Update user balance
             Long balance = (Long)userDocument.get("balance");
             userReference.update("balance", balance.intValue() + transaction.getAmount());
+            Log.d(TAG, "Balance updated");
 
             // Update total coins if amount > 0
             if (transaction.getAmount() > 0) {
                 Long total = (Long)userDocument.get("totalCoins");
                 userReference.update("totalCoins", total.intValue() + transaction.getAmount());
+                Log.d(TAG, "Total coins updated");
             }
 
-            return true;
+            transaction.setId(transactionReference.getId());
+            return transaction;
         } catch (ExecutionException e) {
             Log.e(TAG, "ExecutionException occurred", e);
-            return false;
+            return null;
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
-            return false;
+            return null;
         }
     }
 }

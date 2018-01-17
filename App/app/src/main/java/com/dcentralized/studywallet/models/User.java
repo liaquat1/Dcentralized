@@ -125,12 +125,20 @@ public class User {
 		return false;
 	}
 
+	public void updateBalance(int amount) {
+		balance = balance + amount;
+	}
+
 	public boolean addProject(Project project){
 		if (repository.addProject(this.id, project.getId())) {
 		    projects.add(project);
 		    return true;
         }
         return false;
+	}
+
+	public void addTransaction(Transaction transaction) {
+		transactions.add(transaction);
 	}
 
     @Exclude
