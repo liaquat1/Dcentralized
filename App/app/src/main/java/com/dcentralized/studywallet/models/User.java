@@ -111,6 +111,10 @@ public class User {
     	rank = repository.getRank(id);
 	}
 
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	/**
 	 * Transfers money to a student if user is docent
 	 * @param studentNr Number of student
@@ -127,6 +131,10 @@ public class User {
 
 	public void updateBalance(int amount) {
 		balance = balance + amount;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
 	}
 
 	public boolean addProject(Project project){

@@ -79,9 +79,12 @@ public class DashboardFragment extends Fragment implements OnClickListener {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                StudyWallet.getInstance(getActivity()).getCurrentUser().setTransactions(task.getResult());
-                                // TODO: get balance
+                                StudyWallet.getInstance(getActivity()).getCurrentUser().setTransactions(task.getTransactionsFromDatabase());
+                                StudyWallet.getInstance(getActivity()).getCurrentUser().setRank(task.getRank());
+                                StudyWallet.getInstance(getActivity()).getCurrentUser().setBalance(task.getBalance());
                                 adapter.notifyDataSetChanged();
+                                textCoins.setText(String.valueOf(task.getBalance()));
+                                textRank.setText(String.format("#%s", task.getRank()));
                                 refreshTransactions.setRefreshing(false);
                             }
                         });

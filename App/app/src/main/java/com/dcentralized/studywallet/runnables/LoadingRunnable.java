@@ -39,14 +39,13 @@ public class LoadingRunnable implements Runnable {
     public void run() {
         if (FirebaseAuthService.getInstance(context).login() && StudyWallet.getInstance(context).setCurrentUser()) {
             Intent i;
-            String firstStart = StorageService.getInstance(context).loadValue("firstStart");
-            //String firstStart = "";
+            String firstStart = StorageService.getInstance(context).loadValue(StorageService.TUTORIAL_PREF_KEY);
+
             if(firstStart == null || firstStart.isEmpty()){
                 i = new Intent(context, TutorialActivity.class);
-                StorageService.getInstance(context).storeValue("firstStart", "Not the first start");
+                StorageService.getInstance(context).storeValue(StorageService.TUTORIAL_PREF_KEY, "1");
             } else {
                 i = new Intent(context, MainActivity.class);
-                StorageService.getInstance(context).storeValue("firstStart", "Not the first start");
             }
             context.startActivity(i);
         } else {

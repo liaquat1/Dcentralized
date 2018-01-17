@@ -101,8 +101,8 @@ public class Project implements Serializable{
 
 			if (projectTaskResult && transactionTaskResult != null) {
 				finished = true;
-				StudyWallet.getInstance(context).getCurrentUser().updateBalance(transaction.getAmount());
-				StudyWallet.getInstance(context).getCurrentUser().addTransaction(transactionTaskResult);
+//				StudyWallet.getInstance(context).getCurrentUser().updateBalance(transaction.getAmount());
+//				StudyWallet.getInstance(context).getCurrentUser().addTransaction(transactionTaskResult);
 				return true;
 			}
 			return false;
