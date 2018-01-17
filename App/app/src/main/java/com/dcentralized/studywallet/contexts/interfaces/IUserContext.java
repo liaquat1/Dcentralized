@@ -51,10 +51,5 @@ public interface IUserContext {
      */
     Company getOwner(DocumentReference reference);
 
-    /**
-     * Transfers coins to Student
-     *
-     *
-     */
-    void transferCoins(String studentNr, int amountOfCoins);
+    
 }
