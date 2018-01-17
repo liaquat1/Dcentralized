@@ -1,11 +1,15 @@
 package com.dcentralized.studywallet.models;
 
+import android.util.Log;
+
 import com.dcentralized.studywallet.repositories.UserRepository;
+import com.dcentralized.studywallet.tasks.TransactionAddTask;
 import com.google.firebase.firestore.Exclude;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * This class represents a user in the application
@@ -13,6 +17,7 @@ import java.util.List;
  * @author Tom de Wildt
  */
 public class User {
+    private static final String TAG = User.class.getSimpleName();
     private String id;
 	private String firstname;
 	private String lastname;
@@ -117,16 +122,27 @@ public class User {
 
 	/**
 	 * Transfers money to a student if user is docent
-	 * @param studentNr Number of student
-	 * @param amountOfCoins Amount of coins
+	 * @param studentId Number of student
+	 * @param name of the transaction
+	 * @param amount Amount of coins
 	 * @author Davey van den Bogaard
 	 */
-	public boolean transferCoins(String studentNr, int amountOfCoins) {
-		if (type == UserType.Docent){
+	public boolean transferCoins(String studentId, String name, int amount) {
+		try {
+            if (type == UserType.Docent){
+                Transaction transaction = new Transaction(name, amount);
+                TransactionAddTask task = new TransactionAddTask(transaction, studentId);
 
-			return true;//repository.transferCoins(studentNr,amountOfCoins);
-		}
-		return false;
+                return task.execute().get() != null;
+            }
+            return false;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return false;
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+            return false;
+        }
 	}
 
 	public void updateBalance(int amount) {

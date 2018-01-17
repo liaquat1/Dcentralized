@@ -6,12 +6,10 @@
     android:background="@color/colorBackground"
     tools:context="com.dcentralized.studywallet.fragments.TransferFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <Button
         android:id="@+id/btnTransfer"
         style="@style/AppTheme.StudyCoinButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
@@ -19,14 +17,14 @@
         android:background="@drawable/bg_round_corner"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Transfer"
-        android:textColor="?android:attr/colorForeground"
+        android:text="@string/button_transfer"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textAmount" />
 
     <EditText
-        android:id="@+id/textTransferNumber"
+        android:id="@+id/textStudentId"
         style="@style/AppTheme.StudyCoinText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,12 +32,29 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Studentnr."
-        android:inputType="textPersonName"
+        android:hint="@string/hint_student_nr"
+        android:inputType="text"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textName"
+        style="@style/AppTheme.StudyCoinText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
         android:id="@+id/textAmount"
@@ -48,24 +63,24 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Amount"
-        android:inputType="number"
+        android:hint="@string/hint_amount"
+        android:inputType="numberSigned"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTransferNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/textName" />
 
     <TextView
         android:id="@+id/textView8"
         style="@style/AppTheme.StudyCoinText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="(Example: i356897)"
+        android:layout_marginStart="8dp"
+        android:text="@string/hint_student_nr_label"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/textTransferNumber"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textStudentId"
+        app:layout_constraintTop_toBottomOf="@+id/textStudentId" />
 
 </android.support.constraint.ConstraintLayout>

@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      *
      * @author Tom de Wildt
      */
-    private void closeKeyboard() {
+    public void closeKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
