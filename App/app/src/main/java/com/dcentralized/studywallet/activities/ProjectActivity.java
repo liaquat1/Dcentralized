@@ -15,9 +15,20 @@ import com.dcentralized.studywallet.models.StudyWallet;
 
 import java.text.SimpleDateFormat;
 
+/**
+ * Displays a open project
+ *
+ * @author Tom de Wildt
+ */
 public class ProjectActivity extends AppCompatActivity implements View.OnClickListener {
     private Project project;
 
+    /**
+     * Initializes activity, sets toolbar & fields
+     *
+     * @param savedInstanceState
+     * @author Tom de Wildt
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +45,11 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().setTitle(project.getName());
     }
 
-
+    /**
+     * Handles click event for apply button
+     *
+     * @param view
+     */
     private void onButtonApplyClick(View view) {
         if(StudyWallet.getInstance(this).getCurrentUser().addProject(project)){
             Intent intent = new Intent(this, MainActivity.class);
@@ -44,6 +59,12 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * Handles click events for project activity
+     *
+     * @param view that is clicked
+     * @author Tom de Wildt
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

@@ -37,5 +37,10 @@ public interface IStudyWalletContext {
      */
     User getUserFromDatabase(String id);
 
+    /**
+     *
+     *
+     * @return
+     */
     List<User> getAllUsersFromDatabase();
 }

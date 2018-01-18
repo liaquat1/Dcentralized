@@ -13,6 +13,11 @@ import com.dcentralized.studywallet.models.User;
 
 import java.util.List;
 
+/**
+ * Handles binding of users to list
+ *
+ * @author Tom de Wildt
+ */
 public class RankListAdapter extends ArrayAdapter<User>{
     private ViewHolder viewHolder;
 
