@@ -2,6 +2,7 @@ package com.dcentralized.studywallet.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,6 +26,7 @@ import com.dcentralized.studywallet.fragments.RankingFragment;
 import com.dcentralized.studywallet.fragments.TransferFragment;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.models.User;
+import com.dcentralized.studywallet.models.UserType;
 
 /**
  * This is the main activity for the application, it handles most of the GUI logic
@@ -61,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Set Navigation View
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (StudyWallet.getInstance(this).getCurrentUser().getType() == UserType.Student) {
+            navigationView.getMenu().findItem(R.id.nav_transfer).setVisible(false);
+        }
 
         // Set UI
         setupUI();
@@ -144,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      *
      * @author Tom de Wildt
      */
-    private void closeKeyboard() {
+    public void closeKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

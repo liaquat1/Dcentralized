@@ -23,6 +23,13 @@
     <string name="button_login">LOGIN</string>
     <string name="button_add_project">+Project</string>
     <string name="button_apply">Apply</string>
+    <string name="button_transfer">Transfer</string>
+
+    <!-- Hints -->
+    <string name="hint_student_nr">Student Nr.</string>
+    <string name="hint_student_nr_label">(Example: i356897)</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_amount">Amount</string>
 
     <!-- Text -->
     <string name="text_history">History: </string>

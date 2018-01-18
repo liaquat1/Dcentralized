@@ -3,6 +3,7 @@ package com.dcentralized.studywallet.fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,13 @@ import com.dcentralized.studywallet.activities.ProjectActivity;
 import com.dcentralized.studywallet.adapters.ProjectsListAdapter;
 import com.dcentralized.studywallet.models.Project;
 import com.dcentralized.studywallet.models.StudyWallet;
+import com.dcentralized.studywallet.tasks.ProjectsTask;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * Fragment for viewing all projects
@@ -27,6 +30,7 @@ import java.util.Observer;
 public class AllProjectsFragment extends Fragment implements Observer {
     private View layout;
     private ListView listProjects;
+    private SwipeRefreshLayout refreshAllProjects;
     private ProjectsListAdapter adapter;
     private List<Project> projectList;
 
@@ -53,7 +57,9 @@ public class AllProjectsFragment extends Fragment implements Observer {
         // Inflate the layout for this fragment
         layout = inflater.inflate(R.layout.fragment_all_projects, container, false);
         listProjects = layout.findViewById(R.id.listAllProjects);
+        refreshAllProjects = layout.findViewById(R.id.refreshAllProjects);
         adapter = new ProjectsListAdapter(getActivity(), R.id.listProjects, projectList);
+        refreshAllProjects.setRefreshing(true);
         StudyWallet.getInstance(getActivity()).getAllProjects(this);
         listProjects.setAdapter(adapter);
 
@@ -65,18 +71,34 @@ public class AllProjectsFragment extends Fragment implements Observer {
                 getActivity().startActivity(intent);
             }
         });
+
+        refreshAllProjects.setColorSchemeResources(R.color.colorPrimary);
+        final AllProjectsFragment fragment = this;
+        refreshAllProjects.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                projectList.clear();
+                adapter.notifyDataSetChanged();
+                StudyWallet.getInstance(getActivity()).getAllProjects(fragment);
+            }
+        });
+
         return layout;
     }
 
     @Override
-    public void update(Observable observable, Object o) {
-        final Project project = (Project)o;
+    public void update(Observable observable, final Object o) {
         getActivity().runOnUiThread(new Runnable() {
-           @Override
-           public void run() {
-               projectList.add(project);
-               adapter.notifyDataSetChanged();
-           }
+            @Override
+            public void run() {
+                if (o != null) {
+                    Project project = (Project) o;
+                    projectList.add(project);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    refreshAllProjects.setRefreshing(false);
+                }
+            }
         });
     }
 }

@@ -4,6 +4,7 @@ package com.dcentralized.studywallet.tasks;
 import android.util.Log;
 
 import com.dcentralized.studywallet.models.Transaction;
+import com.dcentralized.studywallet.models.User;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,6 +20,8 @@ public class TransactionsTask implements Runnable {
     private static final String TAG = TransactionsTask.class.getSimpleName();
     private FirebaseFirestore database;
     private List<Transaction> result;
+    private int balance;
+    private int rank;
     private CyclicBarrier barrier;
     private String id;
 
@@ -26,6 +29,7 @@ public class TransactionsTask implements Runnable {
         this.id = id;
         this.barrier = barrier;
         this.result = new ArrayList<>();
+        balance = 0;
         database = FirebaseFirestore.getInstance();
     }
 
@@ -33,7 +37,8 @@ public class TransactionsTask implements Runnable {
     @Override
     public void run() {
         try {
-            getTransactions(getRefrences());
+            getTransactionsFromDatabase(getReferencesFromDatabase());
+            rank = getRankFromDatabase();
             barrier.await();
         } catch (InterruptedException e) {
             Log.e(TAG, "InterruptException occurred", e);
@@ -42,11 +47,19 @@ public class TransactionsTask implements Runnable {
         }
     }
 
-    public List<Transaction> getResult() {
+    public List<Transaction> getTransactionsFromDatabase() {
         return result;
     }
 
-    private List<DocumentReference> getRefrences() {
+    public int getRank() {
+        return rank;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    private List<DocumentReference> getReferencesFromDatabase() {
         try {
             DocumentReference reference = database.collection("users").document(id);
             DocumentSnapshot document = Tasks.await(reference.get());
@@ -61,12 +74,36 @@ public class TransactionsTask implements Runnable {
         }
     }
 
-    private void getTransactions(List<DocumentReference> references) {
+    private int getRankFromDatabase() {
+        try {
+            UsersTask task = new UsersTask();
+            List<User> users = task.execute().get();
+            User user = null;
+
+            for (User foundUser : users) {
+                if (foundUser.getId().equals(id)) {
+                    user = foundUser;
+                    break;
+                }
+            }
+
+            return users.indexOf(user) + 1;
+        } catch (ExecutionException e) {
+            Log.e(TAG, "ExecutionException occurred", e);
+            return 0;
+        } catch (InterruptedException e) {
+            Log.e(TAG, "InterruptException occurred", e);
+            return 0;
+        }
+    }
+
+    private void getTransactionsFromDatabase(List<DocumentReference> references) {
         try {
             for (DocumentReference reference : references) {
                 DocumentSnapshot document = Tasks.await(reference.get());
                 Transaction transaction = document.toObject(Transaction.class);
                 transaction.setId(document.getId());
+                balance += transaction.getAmount();
                 result.add(transaction);
             }
         } catch (ExecutionException e) {

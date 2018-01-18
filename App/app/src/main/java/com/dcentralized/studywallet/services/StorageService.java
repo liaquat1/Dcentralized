@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 public class StorageService {
     // Preferences Keys
     public static final String ID_PREF_KEY = StorageService.class.getSimpleName().toUpperCase() + "_ID";
+    public static final String TUTORIAL_PREF_KEY = StorageService.class.getSimpleName().toUpperCase() + "_TUTORIAL";
 
     // Class Variables
     private static final String TAG = StorageService.class.getSimpleName();

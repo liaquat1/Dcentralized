@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dcentralized.studywallet.R;
+import com.dcentralized.studywallet.activities.MainActivity;
 import com.dcentralized.studywallet.models.StudyWallet;
 import com.dcentralized.studywallet.models.User;
+
+import java.util.regex.Pattern;
 
 /**
  * Fragment to view transfer coins
@@ -21,6 +24,16 @@ import com.dcentralized.studywallet.models.User;
 public class TransferFragment extends Fragment {
     private View layout;
     private Button btnTransfer;
+    private EditText textStudentId;
+    private EditText textName;
+    private EditText textAmount;
+
+    /**
+     * Checks if a string is only containing numbers
+     * @author Tom de Wildt
+     */
+    private static final String NUMBER_REGEX = "\\d+";
+
     /**
      * Empty constructor for creating intents
      *
@@ -44,18 +57,33 @@ public class TransferFragment extends Fragment {
         // Inflate the layout for this fragment
         layout = inflater.inflate(R.layout.fragment_transfer, container, false);
         btnTransfer = layout.findViewById(R.id.btnTransfer);
+        textStudentId = layout.findViewById(R.id.textStudentId);
+        textName = layout.findViewById(R.id.textName);
+        textAmount = layout.findViewById(R.id.textAmount);
+
         btnTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText textStudentNr = layout.findViewById(R.id.textTransferNumber);
-                EditText textAmount = layout.findViewById(R.id.textAmount);
-                User user = StudyWallet.getInstance(layout.getContext()).getCurrentUser();
-                if(user.transferCoins(textStudentNr.getText().toString(),Integer.valueOf(textAmount.getText().toString()))){
-                    Toast.makeText(layout.getContext(), "Transfer completed", Toast.LENGTH_SHORT).show();
-                }else
-                    {Toast.makeText(layout.getContext(),"Transfer failed", Toast.LENGTH_SHORT).show();}
+                onButtonTransferClick(v);
             }
         });
         return layout;
+    }
+
+    private void onButtonTransferClick(View v) {
+        if (textStudentId.getText() != null && textStudentId.getText().length() == 7 && textName.getText() != null && textAmount.getText() != null && Pattern.matches(NUMBER_REGEX, textAmount.getText())) {
+            if (StudyWallet.getInstance(getActivity()).getCurrentUser().transferCoins(textStudentId.getText().toString(), textName.getText().toString(), Integer.parseInt(textAmount.getText().toString()))) {
+                ((MainActivity)getActivity()).closeKeyboard();
+                textStudentId.setText("");
+                textName.setText("");
+                textAmount.setText("");
+                Toast.makeText(getActivity(), "Coins transferred", Toast.LENGTH_SHORT).show();
+            } else {
+                ((MainActivity)getActivity()).closeKeyboard();
+                Toast.makeText(getActivity(), "An error occurred while transferring the coins", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getActivity(), "Please enter valid transaction info", Toast.LENGTH_SHORT).show();
+        }
     }
 }

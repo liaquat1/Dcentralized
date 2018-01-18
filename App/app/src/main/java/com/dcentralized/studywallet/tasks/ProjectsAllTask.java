@@ -14,11 +14,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Get users sorted by total coins
- *
- * @author Tom de Wildt
- */
 public class ProjectsAllTask extends Observable implements Runnable {
     private static final String TAG = ProjectsAllTask.class.getSimpleName();
     private FirebaseFirestore database;
@@ -40,6 +35,8 @@ public class ProjectsAllTask extends Observable implements Runnable {
                 setChanged();
                 notifyObservers(project);
             }
+            setChanged();
+            notifyObservers(null);
         } catch (ExecutionException e) {
             Log.e(TAG, "ExecutionException occurred", e);
         } catch (InterruptedException e) {
