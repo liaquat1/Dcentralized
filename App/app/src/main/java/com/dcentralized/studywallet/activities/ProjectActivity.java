@@ -34,6 +34,7 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().setTitle(project.getName());
     }
 
+
     private void onButtonApplyClick(View view) {
         if(StudyWallet.getInstance(this).getCurrentUser().addProject(project)){
             Intent intent = new Intent(this, MainActivity.class);

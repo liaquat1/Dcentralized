@@ -28,7 +28,7 @@ public class RankListAdapter extends ArrayAdapter<User>{
     }
 
     /**
-     * TransactionListAdapter constructor
+     * RankListAdapter constructor
      *
      * @param context
      * @param id
