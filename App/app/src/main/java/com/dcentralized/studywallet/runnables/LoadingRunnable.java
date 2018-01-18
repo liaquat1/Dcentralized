@@ -39,8 +39,8 @@ public class LoadingRunnable implements Runnable {
     public void run() {
         if (FirebaseAuthService.getInstance(context).login() && StudyWallet.getInstance(context).setCurrentUser()) {
             Intent i;
-            String firstStart = StorageService.getInstance(context).loadValue(StorageService.TUTORIAL_PREF_KEY);
-
+            //String firstStart = StorageService.getInstance(context).loadValue(StorageService.TUTORIAL_PREF_KEY);
+            String firstStart = ""; //Use this if you always want a tutorial
             if(firstStart == null || firstStart.isEmpty()){
                 i = new Intent(context, TutorialActivity.class);
                 StorageService.getInstance(context).storeValue(StorageService.TUTORIAL_PREF_KEY, "1");
